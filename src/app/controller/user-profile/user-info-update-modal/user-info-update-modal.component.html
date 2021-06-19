@@ -1,0 +1,30 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <p>Prénom</p>
+    <input matInput [(ngModel)]="data.firstName" maxlength="50">
+  </mat-form-field>
+  <mat-form-field>
+    <p>Nom</p>
+    <input matInput [(ngModel)]="data.lastName" maxlength="50">
+  </mat-form-field>
+  <mat-form-field>
+    <p>Age</p>
+    <input type="number" matInput [(ngModel)]="data.age" aria-label="Select an option" max="99" min="0">
+  </mat-form-field>
+  <p>Genre</p>
+  <mat-radio-group [(ngModel)]="data.genre" >
+      <mat-radio-button value="Femme" [checked]="data.genre == radio.woman">{{radio.woman}}</mat-radio-button>
+      <mat-radio-button value="Homme" [checked]="data.genre == radio.man">{{radio.man}}</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field>
+    <p>Pays</p>
+    <input matInput [(ngModel)]="data.country" max-length="50">
+  </mat-form-field>
+  <mat-form-field>
+    <p>Présentation</p>
+    <textarea matInput [(ngModel)]="data.presentation" maxlength="500" cols="20" rows="8"></textarea>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Modifier</button>
+  </div>

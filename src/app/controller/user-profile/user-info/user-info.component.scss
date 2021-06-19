@@ -1,0 +1,23 @@
+@import 'src/assets/styles/theme.scss';
+
+::ng-deep .mat-list-item-content{
+    display: flex !important;
+    flex-flow: column !important;
+    align-items: flex-start !important;
+}
+
+.action{
+    text-align: right;
+}
+
+.label{
+    font-style: italic;
+    color: $peach-crayola;
+    font-size: 0.9em;
+    margin-bottom: 0px;
+    margin-left: -5px;
+}
+
+p{
+    margin-bottom: 20px;
+}

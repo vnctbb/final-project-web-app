@@ -1,0 +1,39 @@
+@import 'src/assets/styles/mixin.scss';
+@import 'src/assets/styles/theme.scss';
+
+div {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @include desktop {
+        width: 60%;
+    };
+
+    .label-file{
+        display: flex;
+        align-items: center;
+        cursor : pointer;
+        color: $tumbleweed;
+    }
+
+    .input-file{
+        display: none;
+    }
+
+    button{
+        border: none;
+        background-color: $tumbleweed;
+        color: white;
+        padding: 8px;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    button:disabled,
+    button[disabled]{
+    background-color : lightgrey
+    }
+}

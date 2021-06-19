@@ -1,0 +1,49 @@
+<mat-accordion >
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            POSTS
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngIf="!loaderActive">
+            <div *ngIf='otherPosts' class="user-posts">
+                <div *ngFor='let item of otherPosts' class="for-container">
+                    <mat-card class="example-card">
+                        <mat-card-header>
+                            <mat-card-title>
+                            <p class='author'>{{ item.post.authorName }}</p>
+                            <div>
+                                <p class="time">{{ item.duration }} {{ item.format }}</p>
+                            </div>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p class="post-content">{{ item.post.content }}</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <div class="stats">
+                                <div class="like" *ngIf="item.liked.liked">
+                                    <mat-icon class="apricot pointer" (click)="unlike(item)">thumb_up</mat-icon>
+                                    <p>{{item.like?.length}}</p>
+                                </div>
+                                <div class="like" *ngIf="!item.liked.liked">
+                                    <mat-icon class="pointer" (click)="like(item)">thumb_up</mat-icon>
+                                    <p>{{item.like?.length}}</p>
+                                </div>
+                                <div class="coms">
+                                    <p>{{item.postCom?.length}}</p>
+                                    <mat-icon class="pointer apricot-hover" (click)="openDialog(item.post)"> comment</mat-icon>
+                                </div>
+                            </div>
+                        </mat-card-actions>
+                        </mat-card>
+                </div>
+            </div>
+            <p *ngIf="otherPosts.length < dbCount" class="more apricot pointer" (click)="more()">Afficher plus de post</p>
+            <div classe="none">
+                <p *ngIf="otherPosts.length == 0">Aucun post</p>
+            </div>
+        </div>
+        <app-loader-card *ngIf="loaderActive"></app-loader-card>
+      </mat-expansion-panel>
+</mat-accordion>

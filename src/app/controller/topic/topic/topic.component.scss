@@ -1,0 +1,167 @@
+@import 'src/assets/styles/mixin.scss';
+@import 'src/assets/styles/theme.scss';
+
+.ml10{
+    margin-left: 10px;
+}
+
+.back-button{
+    margin-bottom: 25px;
+}
+
+.info{
+    padding: 10px 0;
+
+    @include tablet {
+        margin: 0 25px;
+    };
+    
+    @include desktop {
+        margin: 0 10%;
+    };
+}
+
+.message{
+    @include tablet {
+        margin: 0 25px;
+    };
+    
+    @include desktop {
+        margin: 0 10%;
+    };
+    
+}
+
+.presentation{
+    margin: 10px !important;
+
+    h2{
+        align-items: justify;
+        margin-bottom: 0px;
+    }
+
+    p{
+        color: $tumbleweed;
+        font-weight: 0.8em;
+        font-style: italic;
+    }
+}
+
+.description{
+    margin: 10px;
+    text-align: justify;
+
+}
+
+.label{
+    font-style: italic;
+    font-size: 0.8em;
+    margin-bottom: 0;
+}
+
+.container-message{
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px auto;
+    min-height: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 95%;
+
+    @include desktop {
+        width: 80%
+    };
+
+    .noMessage{
+        background-color: #fff;
+        border-radius: 5px;
+        height: 80px;
+        width: 90%;
+        text-align: center;
+        justify-content: space-evenly;
+
+        p{
+            margin-top: 30px;
+            font-style: italic;
+        }
+    }
+
+    .sub-container-message{
+        width: 100%;
+
+        .message{
+            background-color: #fff;
+            border-radius: 5px;
+            width: 90%;
+            min-height: 80px;
+            margin: 10px auto;
+        }
+    }
+
+}
+
+.newMessage{
+    width: 90%;
+    height: 80px;
+    padding: 5px;
+    margin: 15px auto;
+    text-align: center;
+
+    @include desktop {
+        width: 75%;
+    };
+
+    mat-form-field, mat-form-field-wrapper, mat-form-field-flex, mat-form-field-infix, textarea{
+        height: 80px;
+        width: 100%;
+    }
+
+    button{
+        margin: 15px auto;
+    }
+}
+
+.topicmessage-content{
+    text-align: justify;
+    margin: 10px 5px;
+}
+
+.action{
+    text-align: right;
+
+    button{
+        border: none;
+        outline: none;
+        width: 30px;
+    }
+}
+
+.button-container{
+    margin: 15px 0px 60px 0px;
+    text-align: center;
+}
+
+.page{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px auto;
+    button{
+        margin: 0px;
+    }
+    @include tablet {
+        width: 60%;
+    };
+
+    @include desktop {
+        width: 40%;
+    };
+
+    .pageCount{
+        text-align: center;
+    }
+}

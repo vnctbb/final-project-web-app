@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<app-search></app-search>
+
+<div *ngIf="!loaderActive" class="result-container">
+    <h2>Résultat de la recherche</h2>
+    
+    <p class="recap">" {{value}} " - {{ users?.length }} résultat(s)</p>
+
+    <mat-divider></mat-divider>
+
+    <div *ngIf="users?.length > 0">
+        <div *ngFor="let user of users">
+            <div class="one-friend">
+                <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                <div>
+                    <p class="friend-name">{{user.firstName}} {{user.lastName}}</p>
+                </div>
+                <p class="goTo" (click)="goToProfile(user)"> voir le profil <mat-icon>keyboard_arrow_right</mat-icon></p>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+
+    <div *ngIf="users?.length == 0">
+        <p>Aucun résultat</p>
+        <button (click)="returnHome()">Retour Accueil</button>
+    </div>
+
+</div>
+
+<aap-loader *ngIf="loaderActive"></aap-loader>

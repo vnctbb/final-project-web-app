@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+    <p>Créer un topic</p>
+    <mat-form-field >
+      <p>Titre du topic*</p>
+      <input matInput [(ngModel)]="data.topicName" maxlength="180" required>
+    </mat-form-field>
+    <mat-form-field>
+      <p>Description*</p>
+      <input matInput [(ngModel)]="data.topicDescription" maxlength="500" required>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial  [disabled]="!data.topicName || !data.topicDescription">Créer</button>
+  </div>

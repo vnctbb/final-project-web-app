@@ -1,0 +1,9 @@
+@import 'src/assets/styles/theme.scss';
+
+mat-form-field, .mat-form-field-wrapper, .mat-form-field-flex, .mat-form-field-infix, textarea{
+    width: 95% !important;
+}
+
+textarea{
+    color : $gray;
+}

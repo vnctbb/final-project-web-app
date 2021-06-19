@@ -1,0 +1,82 @@
+<app-header></app-header>
+
+<button mat-button (click)="backTopic()" class="back-button">
+    Retour à la liste
+</button>
+
+<mat-divider></mat-divider>
+
+<div class="info">
+    <div class="presentation" *ngIf="!loaderActive">
+        <h2>{{ topicDetails.topicName }}</h2>
+        <p>créé le {{ topicDetails.creationDatetime | date:'shortDate':'+0200':'fr'}} par {{topicDetails.ownerName}}</p>
+    </div>
+    
+    <div class="description" *ngIf="!loaderActive">
+        <p class="label">Description :</p>
+        <p>{{ topicDetails.topicDescription }}</p>
+    </div>
+</div>
+
+
+<mat-divider></mat-divider>
+
+<div class="message">
+    <p class="label ml10">Messages :</p>
+</div>
+
+<div class="container-message">
+    <div *ngIf="noMessage" class="noMessage">
+        <p>Il n'y a pas de message...</p>
+    </div>
+
+    <div *ngIf="topicMessages" class="sub-container-message">
+        <div *ngFor="let item of topicMessages" class="message">
+            <p class="label">de {{item.authorName}} le {{item.creationDatetime | date:'short':'+0200':'fr' }}</p>
+            <p class="topicmessage-content">{{item.content}}</p>
+            <div *ngIf="verifyAuthor(item)" class="action">
+                <button mat-menu-item (click)="openDialog(item)" #descriptionTooltip="matTooltip"
+                matTooltip="Modifier le message"
+                aria-label="Modifier le message">
+                    <mat-icon>update</mat-icon>
+                </button>
+                <button mat-menu-item (click)="deleteTopicMessage(item)" #descriptionTooltip="matTooltip"
+                matTooltip="Supprimer le message"
+                aria-label="Supprimer le message">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <button mat-button (click)="previousPage()" [disabled]="paginationA < pageTopicMessageCount || pageCount <= 1">
+      <p *ngIf="paginationA >= pageTopicMessageCount && pageCount > 1">
+        Précédente
+      </p>
+    </button>
+    <div class="pageCount">
+      <p>{{currentPage}} / {{pageCount}}</p>
+    </div>
+    <button mat-button (click)="nextPage()" [disabled]="paginationA + pageTopicMessageCount > topicMessageCount || pageCount <= 1">
+      <p *ngIf="paginationA + pageTopicMessageCount < topicMessageCount && pageCount > 1">
+        Suivante
+      </p>
+    </button>
+  </div>
+
+<div class="button-container">
+    <button class="postSubactmitButton" (click)="reload()" mat-raised-button color="primary">Actualiser</button>
+</div>
+
+<mat-divider></mat-divider>
+
+<form #newTopicMessage="ngForm" class="newMessage">
+    <mat-form-field>
+        <textarea matInput required name="topicMessageContent" #postContent="ngModel" [(ngModel)]="content" maxlength="1500" placeholder="Écrivez un message..."></textarea>
+    </mat-form-field>
+    <button type="submit" class="postSubmitButton" (click)="createTopicMessage()" mat-raised-button color="primary">Créer un message</button>
+</form>
+
+<app-loader *ngIf="loaderActive"></app-loader>

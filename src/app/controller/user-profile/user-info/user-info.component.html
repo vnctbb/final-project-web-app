@@ -1,0 +1,58 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            INFORMATIONS
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card class="example-card">
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>
+                      <p class="label">Prénom :</p>
+                      <p>{{user.firstName}}</p>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <p class="label">Nom :</p>
+                      <p>{{user.lastName}}</p>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <p class="label">Email :</p>
+                      <p>{{user.emailAddress}}</p>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="user.age">
+                      <p class="label">Age : </p>
+                      <p>{{user.age}} ans</p>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="!user.age">
+                      <p class="label">Age :</p>
+                      <p> - </p>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="user.genre">
+                      <p class="label">Genre : </p>
+                      <p>{{user.genre}}</p>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="!user.genre">
+                      <p class="label">Genre : </p>
+                      <p> - </p>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <p class="label">Pays : </p>
+                      <p>{{user.country}}</p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <h3 class="label">Présentation</h3>
+                    <mat-list-item *ngIf="user.presentation"><p>{{user.presentation}}</p></mat-list-item>
+                    <mat-list-item *ngIf="!user.presentation"><p> - </p></mat-list-item>
+                 </mat-list>                   
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+          </mat-card>
+          <div class="action">
+            <button mat-button (click)="openDialog(user)">Modifier</button>
+            <button mat-button (click)="openBottomSheet()">Supprimer le compte</button>
+          </div>
+      </mat-expansion-panel>
+</mat-accordion>
+

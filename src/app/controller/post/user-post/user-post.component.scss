@@ -1,0 +1,133 @@
+@import 'src/assets/styles/theme.scss';
+@import 'src/assets/styles/mixin.scss';
+
+*{
+    text-align: center;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.time, .author{
+    font-style: italic;
+    font-size: 0.6em;
+}
+
+.more{
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.apricot{
+    color: $mellow-apricot;
+}
+
+.for-container{
+    width: 100%;
+}
+
+.example-card {
+    width: 90%;
+    margin: 10px auto;
+
+    @include tablet {
+        max-width: 500px;
+        width: 500px;
+    };
+
+    @include desktop {
+        max-width: 500px;
+        width: 500px;
+    };
+}
+
+::ng-deep .mat-card-header-text {
+    margin: 0px !important;
+    width: 100%;
+}
+
+::ng-deep .mat-expansion-panel-header-title{
+    color: $gray !important;
+    font-weight: bold !important;
+}
+
+mat-card{
+    margin-bottom: 20px;
+}
+
+.user-posts{
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .card-post{
+        background-color: $tumbleweed;
+        border-radius: 5px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+        display: grid;
+        grid-template-rows: 1fr 3fr 1fr;
+        min-height: 150px;
+        margin-bottom: 25px;
+        padding: 5px;
+        width: 80%;
+        box-sizing: border-box;
+    }
+
+    .mat-card-title{
+        color: $dark-gray;
+        display: flex;
+        justify-content: space-between;
+        font: 0.2em;
+        width: 100%;
+
+        div{
+            display: flex;
+            flex-flow: row;
+            button{
+                text-align: right;
+                mat-icon{
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+
+    .post-content{
+        text-align: justify;
+    }
+
+    .content{
+        background-color: #fff;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        font-size: 1.6em;
+        line-height: 100%;
+        height: 100%;
+    }
+
+    .stats{
+        color: $dark-gray;
+        display: flex;
+        justify-content: space-between;
+        font: 0.2em;
+
+        p{
+            margin-bottom: 0px;
+        }
+
+        .like, .coms{
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            p{
+                margin-left: 5px;
+            }
+            mat-icon{
+                margin-left: 5px;
+            }
+        }
+    }
+}

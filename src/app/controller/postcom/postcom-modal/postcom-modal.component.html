@@ -1,0 +1,45 @@
+<div class="postcom-container">
+    <div *ngIf="postComs?.length > 0" class="postcom-loop">
+        <p *ngIf="dbCount > count" (click)="more()" class="more">Charger plus</p>
+        <div *ngFor="let item of postComs" class="postcom">
+            <div class="postcom-top">
+                <div class="info">
+                    <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profil_picture">
+                    <p>{{item.authorName}}</p>
+                </div>
+                <div class="top-right">
+                    <p class="time">{{item.duration}} {{item.format}}</p>
+                    <button *ngIf="item.authorId == data.mainUserId" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="openDialog(item)">
+                            <mat-icon>update</mat-icon>
+                            <span>Modifier</span>
+                        </button>
+                        <button mat-menu-item (click)="deletePostCom(item._id)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Supprimer</span>
+                        </button>
+                    </mat-menu>
+                    <button class="authorDelete" *ngIf="authorId == data.mainUserId && item.authorId != data.mainUserId" (click)="authorDeletePostCom(item._id)" #titleTooltip="matTooltip"
+                    matTooltip="Supprimer le commentaire"
+                    [matTooltipPosition]="position.value"
+                    aria-label="Delete postCom">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <p class="content">{{item.content}}</p>
+        </div>
+    </div>
+    <div *ngIf="postComs?.length == 0">
+        <p>Aucun commentaire</p>
+    </div>
+</div>
+<form #newPostComForm="ngForm" (ngSubmit)="createPostCom(newPostComForm)" class="form">
+    <mat-form-field>
+        <textarea matInput required name="postContent" #postComContent="ngModel" [(ngModel)]="content" maxlength="360" placeholder="Écrivez un commentaire..."></textarea>
+    </mat-form-field>
+    <button type="submit" class="postSubmitButton" mat-raised-button color="primary">Créer un commentaire</button>
+</form>

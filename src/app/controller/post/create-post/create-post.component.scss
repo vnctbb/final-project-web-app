@@ -1,0 +1,33 @@
+@import 'src/assets/styles/mixin.scss';
+
+form{
+    border-radius: 10px;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 80%;
+    padding: 15px;
+    margin: 0 auto;
+
+    @include desktop {
+        width: 60%;
+    };
+
+    mat-form-field{
+        margin: 0 auto;
+        width: 80%;
+        textarea{
+            font-size: 1.3em;
+            height: 100px;
+            max-width: 400px;
+            resize: none;
+            width: 100%;
+        }
+    }
+
+    .postSubmitButton{
+        width: 60%;
+        max-width: 400px;
+    }
+}

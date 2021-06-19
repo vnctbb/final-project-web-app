@@ -1,0 +1,153 @@
+<app-header></app-header>
+
+<div class="userInfo">
+
+  <div *ngIf="!thumbnail" class="profile-picture">
+      <img src="../../../assets/img/blank-profile-picture.png" alt="blank-profile-picture">
+  </div>
+
+  <div *ngIf="thumbnail" class="profile-picture">
+      <img [src]='thumbnail' alt="profile_picture">
+  </div>
+
+    <div>
+        <p>Bienvenue sur le profil de {{ otherDetails?.firstName }}</p>
+    </div>
+    
+</div>
+
+<app-manage-friend *ngIf='otherDetails' [user]="otherDetails" [friend]="friendship" ></app-manage-friend>
+
+<mat-divider></mat-divider>
+
+<div *ngIf="!loaderActive">
+    <div *ngIf="!friendship" class="not-friend">
+        <p>Ajoutez {{ otherDetails?.firstName }} en ami pour voir son profil !</p>
+    </div>
+    <div *ngIf="friendship?.status == statusWaiting" class="not-friend">
+        <p>L'invitation doit être accepté pour voir le profil de {{ otherDetails?.firstName }}...</p>
+    </div>
+    <div *ngIf="friendship?.status == statusAccepted" class="cards">
+        <!-- INFORMATION CARD-->
+        <mat-accordion class="margin15">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    INFORMATIONS
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-card class="example-card">
+                    <mat-card-content>
+                        <mat-list>
+                            <mat-list-item>
+                              <p class="label">Nom :</p>
+                              <p>{{otherDetails?.lastName}}</p>
+                            </mat-list-item>
+                            <mat-list-item>
+                              <p class="label">Prénom :</p>
+                              <p>{{otherDetails?.firstName}}</p>
+                            </mat-list-item>
+                            <mat-list-item>
+                              <p class="label">Email :</p>
+                              <p>{{otherDetails?.emailAddress}}</p>
+                            </mat-list-item>
+                            <mat-list-item *ngIf="otherDetails?.age">
+                              <p class="label">Age : </p>
+                              <p>{{otherDetails?.age}} ans</p>
+                            </mat-list-item>
+                            <mat-list-item *ngIf="!otherDetails?.age">
+                              <p class="label">Age :</p>
+                              <p> - </p>
+                            </mat-list-item>
+                            <mat-list-item *ngIf="otherDetails?.genre">
+                              <p class="label">Genre : </p>
+                              <p>{{otherDetails?.genre}}</p>
+                            </mat-list-item>
+                            <mat-list-item *ngIf="!otherDetails?.genre">
+                              <p class="label">Genre : </p>
+                              <p> - </p>
+                            </mat-list-item>
+                            <mat-list-item>
+                              <p class="label">Pays : </p>
+                              <p>{{otherDetails?.country}}</p>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <h3 class="label">Présentation</h3>
+                            <mat-list-item *ngIf="otherDetails?.presentation"><p>{{otherDetails?.presentation}}</p></mat-list-item>
+                            <mat-list-item *ngIf="!otherDetails?.presentation"><p> - </p></mat-list-item>
+                         </mat-list>                   
+                    </mat-card-content>
+                  </mat-card>
+              </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- FRIEND CARD-->
+        <mat-accordion>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  AMIS
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-card class="friend-card example-card" *ngIf="!friendLoaderActive">
+                  <mat-card-content>
+                      <p *ngIf="otherFriends?.length == 0" class="none">Aucun ami</p> 
+                      <div  *ngIf="otherFriends?.length > 0">
+                          <div *ngFor="let friend of otherFriends">
+                              <div class="one-friend">
+                                  <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                                  <div>
+                                      <p class="friend-name" (click)="goToFriend(friend)">{{friend.displayName}}</p>
+                                  </div>
+                                    
+                                  <p class="since">depuis {{friend.duration}} {{friend.format}}</p>
+                              </div>
+                              <mat-divider></mat-divider>
+                          </div>       
+                      </div>
+                  </mat-card-content>
+                </mat-card>
+              <app-loader-card *ngIf="friendLoaderActive"></app-loader-card>
+            </mat-expansion-panel>
+      </mat-accordion>
+      
+
+      <app-other-post *ngIf='otherDetails' [user]="otherDetails" [friend]="friendship" [mainUserId]="mainUserId" class="margin15"></app-other-post>
+
+      <!-- TOPICS CARD-->
+      <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                TOPICS
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p *ngIf="otherTopics.length == 0" class="none">Aucun topic</p>
+            <div *ngIf='!loaderActive && otherTopics?.length > 0' class="topic-card">
+                <mat-card *ngFor='let item of otherTopics' class="example-card topic-card">
+                    <mat-card-content class="topic-card">
+                        <p class="label">Titre du topic :</p>
+                        <p class="content">{{item.topicName}}</p>
+                        <p class="label">Description :</p>
+                        <p class="content">{{item.topicDescription}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <div class="menu">
+                          <button mat-menu-item>
+                              <mat-icon (click)='openTopic(item._id)' #titleTooltip="matTooltip"
+                              matTooltip="Aller au topic"
+                              [matTooltipPosition]="position.value"
+                              aria-label="Go to topic">arrow_forward</mat-icon>
+                          </button>
+                      </div>
+                  </mat-card-actions>
+                </mat-card>
+            </div>
+            <app-loader-card *ngIf="loaderActive"></app-loader-card>
+          </mat-expansion-panel>
+    </mat-accordion>
+  </div> 
+</div>
+
+
+<app-loader *ngIf='loaderActive'></app-loader>

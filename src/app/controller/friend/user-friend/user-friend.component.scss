@@ -1,0 +1,76 @@
+@import 'src/assets/styles/theme.scss';
+@import 'src/assets/styles/mixin.scss';
+
+.action{
+    display: flex;
+    justify-content: center;
+}
+
+.received-action{
+    display : flex;
+    justify-content: end;
+}
+
+.dispatch{
+    color: $tumbleweed;
+}
+
+.none{
+    text-align: center;
+    color: $gray;
+}
+
+.one-friend{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    margin: 5px;
+
+    img{
+        width: 30px;
+        border-radius: 50px;
+    }
+
+    p{
+        margin-bottom: 0px;
+    }
+
+    .friend-name{
+        cursor : pointer;
+        color: $gray;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .friend-name:hover{
+        color: $peach-crayola;
+    }
+
+    .status, .since{
+        font-size: 0.8em;
+        font-style: italic;
+        color: $dark-gray;
+
+        @include tablet {
+            font-size: 1em;
+        };
+    
+        @include desktop {
+            font-size: 1em;
+        };
+    }
+
+    .status{
+        color: $tumbleweed;
+    }
+
+    button>mat-icon{
+        color: $tumbleweed;
+    }
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}

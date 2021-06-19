@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="userInfo">
+
+    <div *ngIf="!thumbnail" class="profile-picture" #titleTooltip="matTooltip"
+    matTooltip="Ajouter une photo de profil"
+    [matTooltipPosition]="position.value"
+    aria-label="Add picture" (click)="openPictureDialog()">
+        <img src="../../../assets/img/blank-profile-picture.png" alt="blank-profile-picture">
+    </div>
+
+    <div *ngIf="thumbnail" class="profile-picture" #titleTooltip="matTooltip"
+    matTooltip="Modifier la photo de profil"
+    [matTooltipPosition]="position.value"
+    aria-label="Change picture" (click)="openPictureDialog()">
+        <img [src]='thumbnail' alt="profile_picture">
+    </div>
+
+    <div>
+        <p>Bonjour {{ userDetails?.firstName }}</p>
+    </div>
+    
+</div>
+
+<app-create-post></app-create-post>
+
+<mat-divider></mat-divider>
+
+<app-create-topic></app-create-topic>
+
+<div class="cards">
+
+    <app-user-info *ngIf='userDetails' [user]="userDetails"></app-user-info>
+
+    <app-user-friend *ngIf='userDetails' [user]="userDetails"></app-user-friend>
+    
+    <app-user-post *ngIf='userDetails' [user]="userDetails"></app-user-post>
+
+    <app-user-topic *ngIf='userDetails' [user]="userDetails"></app-user-topic>
+
+</div>
+
+<app-loader *ngIf="loaderActive"></app-loader>

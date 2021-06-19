@@ -1,0 +1,37 @@
+@import 'src/assets/styles/theme.scss';
+
+.done{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+
+    p{
+        color: $tumbleweed;
+        height: 100%;
+        margin-bottom: 0px;
+    }
+
+    .friend{
+        color: $gray;
+    }
+
+    button{
+        background-color: none;
+        border: none;
+        outline: none;
+        mat-icon{
+            cursor: pointer;
+            color: $tumbleweed;
+        }
+    }
+}
+
+.add-container{
+    text-align: center;
+    margin-bottom: 25px;
+
+    button:hover{
+        color : $tumbleweed
+    }
+}

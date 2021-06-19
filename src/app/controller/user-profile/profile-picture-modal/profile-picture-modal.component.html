@@ -1,0 +1,5 @@
+<div>
+    <label for="fileImage" class="label-file"><mat-icon>folder</mat-icon> Choisissez une image...</label>
+    <input id="fileImage" #fileInput class="input-file" type="file" [(ngModel)]="data.image" name="avatar" />
+    <button (click)="onSubmit()" [disabled]="!data.image">Upload</button>
+</div>

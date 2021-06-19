@@ -1,0 +1,180 @@
+@import 'src/assets/styles/mixin.scss';
+@import 'src/assets/styles/theme.scss';
+
+.display-header{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px 50px 0px;
+    padding: 10px 5px;
+
+    @include tablet {
+        margin: 0px 0px 25px 0px;
+        padding: 10px 20px;
+
+    }
+
+    @include desktop {
+        margin: 0px 0px 10px 0px;
+        padding: 20px 30px;
+    }
+
+    .brand{
+        cursor: pointer;
+        display: flex;
+
+        .logo{
+            height: 50px;
+            width: 50px;
+            z-index: 800;
+        }
+    
+        .title{
+            color: $gray;
+            font-family: "Courgette", cursive;
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 10px;
+            position: relative;
+            z-index: 800;
+        }
+    }
+
+    .menu-button{
+        z-index: 800;
+        input[type=button]{
+            background-color: transparent;
+            border: none;
+            color: $gray;
+            cursor: pointer;
+            font-size: 1.8em;
+            font-weight: bold;
+            outline: none;
+            transform: rotate(-90deg);
+            transform-origin: bottom right;
+        }
+
+        input[type=button]:hover{
+            color: $dark-gray;
+            transform: rotate(-90deg);
+            transform-origin: bottom right;
+        }
+    }
+}
+
+.menu{
+    background-color: $peach-crayola;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    padding-top: 20%;
+    position: fixed;
+    right: -255px;
+    top: 0px;
+    width: 255px;
+    z-index: 1000;
+
+    @include tablet {
+        width: 320px;
+        right: -320px;
+
+    }
+
+    @include desktop {
+        width: 420px;
+        right: -420px;
+    }
+
+    input[type=button], .menu-link{
+        background-color: transparent;
+        color: $gray;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        outline: none;
+        margin-left: auto;
+        margin-right: auto;
+    
+        @include desktop {
+            transition: transform .2s;
+        }
+    }
+
+    .menu-link{
+        color: $gray;
+        text-decoration: none;
+        font-size: 1.4em;
+        margin-bottom: 15px;
+    }
+
+    input[type=button]:hover{
+        color: $dark-gray;
+    
+        @include desktop {
+            transform: scale(1.5)
+        }
+    }
+
+    .hide-menu-button{
+        font-size: 2em;
+        position: absolute;
+        top: 10px;
+        width: 50px;
+    }
+
+    .last{
+        font-size: 1em;
+        margin-top: 100px;
+    }
+}
+
+.menuHide {
+    right: -255px;
+
+    @include tablet {
+        right: -320px;
+    }
+
+    @include desktop {
+        right: -420px;
+    }
+
+    animation: 0.3s linear 0s hide;
+}
+
+.menuShow {
+    right: 0px;
+    animation: 0.3s linear 0s show;
+}
+
+@keyframes show { 
+    from { 
+        right:-255px;
+        
+        @include tablet {
+            right: -320px;
+        }
+    
+        @include desktop {
+            right: -420px;
+        }
+    } to { 
+        right:0px; 
+    }  
+}
+
+@keyframes hide { 
+    from { 
+        right:0px; 
+    } to { 
+        right:-255px;
+        
+        @include tablet {
+            right: -320px;
+        }
+    
+        @include desktop {
+            right: -420px;
+        }
+    }  
+}

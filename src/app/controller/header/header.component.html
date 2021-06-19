@@ -1,0 +1,17 @@
+<div class="display-header">
+    <div class="brand" (click)="goToHome()">
+        <img src="../../../assets/img/logo.png" alt="peach-logo" class="logo">
+        <p class="title">Peach</p>
+    </div>
+    <div class="menu-button">
+        <input type="button" (click)='showMenu()' value='Menu'>
+    </div>
+</div>
+<div #menu class="menu">
+    <input type="button" (click)='hideMenu()' value='X' class="hide-menu-button">
+    <a routerLink="/home" class="menu-link">Accueil</a>
+    <a routerLink="/profile" class="menu-link">Profil</a>
+    <a href="#" class="menu-link">Paramètres</a>
+    <a routerLink="/topiclist" class="menu-link">Forum</a>
+    <input type="button" (click)='onLogout()' value='Deconnexion' class="last">
+</div>

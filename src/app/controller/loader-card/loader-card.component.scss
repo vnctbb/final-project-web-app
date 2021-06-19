@@ -1,0 +1,10 @@
+@import 'src/assets/styles/theme.scss';
+
+.spinner-box{
+    display: flex;
+    justify-content: center;
+}
+
+:host ::ng-deep .custom-spinner circle{  
+    stroke: $peach-crayola;
+}

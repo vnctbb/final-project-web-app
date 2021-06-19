@@ -1,0 +1,9 @@
+<form #newSearch="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput required name="searchContent" [(ngModel)]="value" placeholder="Rechercher par Prénom et Nom..." #titleTooltip="matTooltip"
+        matTooltip="Rechercher par Prénom, Nom ou les deux !"
+        [matTooltipPosition]="position.value"
+        aria-label="Search">
+    </mat-form-field>
+    <button type="submit" class="postSubmitButton" mat-raised-button color="primary">Rechercher</button>
+</form>

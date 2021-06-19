@@ -1,0 +1,27 @@
+<form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+    <input type="text" #emailAddress="ngModel" [(ngModel)]="userService.selectedUser.emailAddress" name="emailAddress" placeholder="Adresse email"
+    required [pattern]="emailAddressRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !emailAddress.valid }">
+    <div *ngIf="signUpForm.submitted && emailAddress.errors">
+      <label *ngIf="emailAddress.errors.required" class="validation-message">Ce champs est requis.</label>
+      <label *ngIf="emailAddress.errors.pattern" class="validation-message">Addresse email invalid.</label>
+    </div>
+    <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Mot de passe"
+    minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+    <div *ngIf="signUpForm.submitted && password.errors">
+      <label *ngIf="password.errors.required" class="validation-message">Ce champs est requis.</label>
+      <label *ngIf="password.errors.minlength" class="validation-message">Renseigné au minimum 4 caractères.</label>
+    </div>
+    <input type="text" #firstName="ngModel" [(ngModel)]="userService.selectedUser.firstName" name="firstName" placeholder="Prénom"
+    required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !firstName.valid }">
+    <div *ngIf="signUpForm.submitted && !firstName.valid">
+      <label class="validation-message">Ce champs est requis.</label>
+    </div>
+    <input type="text" #lastName="ngModel" [(ngModel)]="userService.selectedUser.lastName" name="lastName" placeholder="Nom"
+    required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !lastName.valid }">
+    <div *ngIf="signUpForm.submitted && !lastName.valid">
+      <label class="validation-message">Ce champs est requis.</label>
+    </div>
+    <input type="submit" value="Inscription">
+  </form>
+
+  <app-loader *ngIf="loaderActive"></app-loader>

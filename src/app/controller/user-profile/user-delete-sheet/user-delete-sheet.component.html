@@ -1,0 +1,10 @@
+<p class="warning">Attention vous êtes sur le point de supprimer votre compte !</p>
+
+<p>Cette action entrainera la suppresion de vos posts et topics.</p>
+
+<p>Cette action est irréversible.</p>
+
+<div class="action">
+    <button mat-button (click)="this._bottomSheetRef.dismiss()">Annuler</button>
+    <button mat-button (click)='delete()'>Supprimer</button>
+</div>

@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+    <p>Modifier le message</p>
+    <mat-form-field>
+      <p>Description*</p>
+      <textarea matInput [(ngModel)]="data.content" maxlength="500" required></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial  [disabled]="!data.content">Modifier</button>
+  </div>

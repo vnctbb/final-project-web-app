@@ -1,0 +1,197 @@
+@import 'src/assets/styles/theme.scss';
+@import 'src/assets/styles/mixin.scss';
+
+.userInfo{
+    text-align: center;
+
+    .profile-picture{
+        border: 3px solid $peach-crayola;
+        border-radius: 100px;
+        height: 150px;
+        width: 150px;
+        z-index: 10;
+        overflow: hidden;
+        margin: 0 auto;
+        img{
+            max-width: 100%;
+            z-index: 8;
+        }
+    }
+}
+
+.not-friend{
+    text-align: center;
+    margin-top: 100px;
+    p{
+        color: $tumbleweed;
+        font-size: 1.2em;
+    }
+}
+
+.cards{
+    margin: 25px auto;
+    @include desktop {
+        width: 60%;
+    };
+}
+
+::ng-deep .mat-list-item-content{
+    display: flex !important;
+    flex-flow: column !important;
+    align-items: flex-start !important;
+}
+
+.action{
+    text-align: right;
+}
+
+.label{
+    font-style: italic;
+    color: $peach-crayola;
+    font-size: 0.9em;
+    margin-bottom: 0px;
+    margin-left: -5px;
+}
+
+p{
+    margin-bottom: 20px;
+}
+
+mat-panel-title{
+    font-weight: bold;
+    color: $gray !important;
+}
+
+.margin15{
+    margin: 15px;
+}
+
+.friend-card{
+    .action{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .received-action{
+        display : flex;
+        justify-content: end;
+    }
+    
+    .dispatch{
+        color: $tumbleweed;
+    }
+    
+    .none{
+        text-align: center;
+        color: $gray;
+    }
+    
+    .one-friend{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        margin: 5px;
+    
+        img{
+            width: 30px;
+            border-radius: 50px;
+        }
+    
+        p{
+            margin-bottom: 0px;
+        }
+    
+        .friend-name{
+            cursor : pointer;
+            color: $gray;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    
+        .friend-name:hover{
+            color: $peach-crayola;
+        }
+    
+        .status, .since{
+            font-size: 0.6em;
+            font-style: italic;
+            color: $dark-gray;
+    
+            @include tablet {
+                font-size: 1em;
+            };
+        
+            @include desktop {
+                font-size: 1em;
+            };
+        }
+    
+        .status{
+            color: $tumbleweed;
+        }
+    
+        button>mat-icon{
+            color: $tumbleweed;
+        }
+    }
+    
+    button{
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+
+}
+
+.topic-card{
+    .menu{
+        display: flex;
+        flex-flow: row;
+        justify-content: right;
+        margin-top: 10px;
+
+        button{
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+
+        mat-icon{
+            color: $tumbleweed;
+        }
+    }
+    
+    .none{
+        text-align: center;
+    }
+    
+    .material-icons{
+        cursor: pointer !important;
+    }
+    
+    .mat-list-item-content{
+        padding: 0 !important;
+    }
+    
+    button{
+        text-align: center;
+    }
+    
+    .topic-card{
+        margin-bottom: 15px;
+    }
+    
+    .label{
+        font-style: italic;
+        font-size: 0.8em;
+        margin-bottom: 0px;
+    }
+    
+    .content{
+        text-align: justify;
+    }
+    
+    .none{
+        text-align: center;
+    }
+}

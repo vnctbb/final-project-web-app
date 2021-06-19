@@ -1,0 +1,44 @@
+
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            TOPICS
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngIf='!loaderActive'>
+            <mat-card *ngFor='let item of userTopics' class="example-card">
+                <mat-card-content class="topic-card">
+                    <p class="label">Titre du topic :</p>
+                    <p class="content">{{item.topicName}}</p>
+                    <p class="label">Description :</p>
+                    <p class="content">{{item.topicDescription}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="menu">
+                        <button mat-menu-item (click)="openDialog(item)" #titleTooltip="matTooltip"
+                        matTooltip="Modifier le topic"
+                        [matTooltipPosition]="position.value"
+                        aria-label="Update topic">
+                            <mat-icon>update</mat-icon>
+                        </button>
+                        <button mat-menu-item (click)="deleteTopic(item._id)" #titleTooltip="matTooltip"
+                        matTooltip="Supprimer le topic"
+                        [matTooltipPosition]="position.value"
+                        aria-label="Delete topic">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon (click)='openTopic(item._id)' #titleTooltip="matTooltip"
+                            matTooltip="Aller au topic"
+                            [matTooltipPosition]="position.value"
+                            aria-label="Go to topic">arrow_forward</mat-icon>
+                        </button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+            <p *ngIf="userTopics.length == 0" class="none">Aucun topic</p>
+        </div>
+        <app-loader-card *ngIf="loaderActive"></app-loader-card>
+      </mat-expansion-panel>
+</mat-accordion>

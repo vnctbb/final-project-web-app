@@ -1,0 +1,83 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            AMIS
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="action">
+            <button mat-button class="dispatch" (click)="showAccepted()">Amis</button>
+            <button mat-button class="dispatch" (click)="showReceived()">Reçus</button>
+            <button mat-button class="dispatch" (click)="showSended()">Envoyé</button>
+          </div>
+        <mat-card class="example-card" *ngIf="!loaderActive">
+            <mat-card-content *ngIf="acceptedActive">
+                <p *ngIf="acceptedFriend.length == 0" class="none">Aucun ami</p> 
+                <div  *ngIf="acceptedFriend.length > 0">
+                    <div *ngFor="let friend of acceptedFriend">
+                        <div class="one-friend">
+                            <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <div>
+                                <p class="friend-name" (click)="goTo(friend)">{{friend.displayName}}</p>
+                                <p class="since">depuis {{friend.duration}} {{friend.format}}</p>
+                            </div>
+                            <button mat-menu-item (click)="deleteFriend(friend)" #titleTooltip="matTooltip"
+                            matTooltip="Supprimer"
+                            [matTooltipPosition]="position.value"
+                            aria-label="Delete friend">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>       
+                </div>
+            </mat-card-content>
+            <mat-card-content *ngIf="receivedActive">
+                <p *ngIf="receivedFriend.length == 0" class="none">Aucune invitation reçue</p>  
+                <div  *ngIf="receivedFriend.length > 0">
+                    <div *ngFor="let friend of receivedFriend">
+                        <div class="one-friend">
+                            <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <div>
+                                <p class="friend-name" (click)="goTo(friend._id)">{{friend.senderName}}</p>
+                                <p class="since">depuis {{friend.duration}} {{friend.format}}</p>
+                            </div>
+                            <div class="received-action">
+                                <button mat-menu-item (click)="acceptFriend(friend)" #titleTooltip="matTooltip"
+                                matTooltip="Accepter"
+                                [matTooltipPosition]="position.value"
+                                aria-label="Accept friend">
+                                    <mat-icon>check</mat-icon>
+                                </button>
+                                <button mat-menu-item (click)="declineFriend(friend)" #titleTooltip="matTooltip"
+                                matTooltip="Refuser"
+                                [matTooltipPosition]="position.value"
+                                aria-label="Decline friend">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>       
+                </div>          
+            </mat-card-content>
+            <mat-card-content *ngIf="sendedActive">
+                <p *ngIf="sendedFriend.length == 0" class="none">Aucune invitation envoyée</p> 
+                <div  *ngIf="sendedFriend.length > 0">
+                    <div *ngFor="let friend of sendedFriend">
+                        <div class="one-friend">
+                            <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <div>
+                                <p class="friend-name" (click)="goTo(friend._id)">{{friend.receiverName}}</p>
+                                <p class="since">depuis {{friend.duration}} {{friend.format}}</p>
+                            </div>
+                            <p class="status">En attente</p>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>                 
+                </div>
+            </mat-card-content>
+          </mat-card>
+        <app-loader-card *ngIf="loaderActive"></app-loader-card>
+      </mat-expansion-panel>
+</mat-accordion>

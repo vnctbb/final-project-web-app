@@ -1,0 +1,57 @@
+@import 'src/assets/styles/theme.scss';
+
+.menu{
+    display: flex;
+    flex-flow: row;
+    margin-top: 10px;
+    justify-content: right;
+
+    button{
+        background-color: transparent;
+        border: none;
+        outline: none;
+
+        mat-icon{
+            color: $tumbleweed
+        }
+
+        mat-icon:hover{
+            color: $sandy-brown;
+        }   
+    }
+}
+
+.none{
+    text-align: center;
+}
+
+.material-icons{
+    cursor: pointer !important;
+}
+
+.mat-list-item-content{
+    padding: 0 !important;
+}
+
+button{
+    text-align: center;
+}
+
+.topic-card{
+    margin-bottom: 15px;
+}
+
+.label{
+    color: $peach-crayola;
+    font-style: italic;
+    font-size: 0.8em;
+    margin-bottom: 0px;
+}
+
+.content{
+    text-align: justify;
+}
+
+.none{
+    text-align: center;
+}

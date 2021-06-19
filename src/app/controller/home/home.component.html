@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<app-search></app-search>
+
+<app-create-post></app-create-post>
+
+<div *ngIf="!loaderActive" class="big-container">
+    <div *ngIf='friendsPosts' class="user-posts">
+        <div *ngFor='let item of friendsPosts' class="for-container">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <div>
+                            <img src="../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <p class='author'>{{ item.post.authorName }}</p>
+                        </div>
+                        <div>
+                            <p class="time">{{ item.duration }} {{ item.format }}</p>
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="openDialog(item)">
+                                    <mat-icon>update</mat-icon>
+                                    <span>Modifier</span>
+                                </button>
+                                <button mat-menu-item (click)="deletePost(item.post._id)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Supprimer</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="post-content">{{ item.post.content }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="stats">
+                        <div class="like" *ngIf="item.liked.liked">
+                            <mat-icon class="apricot pointer" (click)="unlike(item)">thumb_up</mat-icon>
+                            <p>{{item.like?.length}}</p>
+                        </div>
+                        <div class="like" *ngIf="!item.liked.liked">
+                            <mat-icon class="pointer" (click)="like(item)">thumb_up</mat-icon>
+                            <p>{{item.like?.length}}</p>
+                        </div>
+                        <div class="coms">
+                            <p>{{item.postCom?.length}}</p>
+                            <mat-icon class="pointer apricot" (click)="openDialog(item.post)"> comment</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-actions>
+                </mat-card>
+        </div>
+    </div>
+    <p *ngIf="friendsPosts?.length < dbCount" class="more apricot pointer" (click)="more()">Afficher plus de post</p>
+    <div classe="none">
+        <p *ngIf="friendsPosts?.length == 0">Aucun post</p>
+    </div>
+</div>
+
+<app-loader *ngIf="loaderActive"></app-loader>

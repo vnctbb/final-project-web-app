@@ -1,0 +1,23 @@
+@import 'src/assets/styles/theme.scss';
+
+.hide{
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    position: fixed;
+    top : 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner-box{
+    margin: 0 auto;
+}
+
+:host ::ng-deep .custom-spinner circle{  
+    stroke: $peach-crayola;
+}

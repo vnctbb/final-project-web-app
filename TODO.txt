@@ -1,0 +1,92 @@
+Ce soir :
+
+- rajoute un author name dans les entité qui en ont besoin : Post, PostCom, Like, Topic, TopicMessage,
+
+- faire la page topics, avec tous les anciens message et ecrire un message, et suppression et modification de ces propres messages
+
+Demain :
+
+CSS de topics list --
+
+Pagination topic list --
+
+CSS de topics --
+
+Pagination topics message --
+
+bug affichage dans profile --
+
+profile post --
+
+Menu + accélérer déployement du menu --
+
+Cacher afficher ancien post si arrivé au bout --
+
+Style tablet + desktop --
+
+loader passe au dessus du menu = problème + loader cards --
+
+Suppression du compte --
+
+Après-demain si pas le temps avant :
+
+Affichage des datas et modification des datas de l'user => 14 matin --
+
+revoir création de compte : style, country, connexion après sign in => 14 soir --
+
+Profile user => card friends avec amis, reçu, envoyé => 14 soir
+
+Profile other user (ajouter user, ajouter ami, post (like comment), topic) => 15 --
+
+entre deux => supprimer post com depuis profile -- + (like own post --)
+
+Page accueil (tous les posts de mes amis + création de post + like + comment) => 16 --
+
+RAPIDE :
+
+VOIR QUI LIKE
+
+LIEN RAPIDE VERS ACCUEIL, BACK VERS TOPICS
+
+CLIQUER SUR LE NOM DES GENS POUR ALLER SUR LEUR PROFIL
+
+Ajouter pagination dans la recherche si j'ai le temps
+
+Remodifier toutes les entités quand je modifie un user
+
+Essayer de passer les photos sur les posts
+
+BIG TASK :
+
+Search avec page résult 17 --
+
+Photo 18 --
+
+Page admin 19
+
+Chat 20
+
+Changer mot de passe et adresse mail 20
+
+CLOSE :
+
+router.navigate change profile to home
+
+Plus tard :
+
+envoye de mail
+
+select pour le pays
+
+Rajouter à topics => mes topics
+limiter nombre de résultat et demander à afficher plus de résultat (pour topic peut-être renvoyer vers une page mes topics => dans ce cas : page mes topics)
+
+A faire avant de déployer :
+
+enlever limit de post (enfin l'agrandir)
+
+Supprimer TODO.txt
+
+Enlever console.log()
+
+Changer API URL et DB URL

@@ -1,0 +1,32 @@
+@import 'src/assets/styles/mixin.scss';
+@import 'src/assets/styles/theme.scss';
+
+.userInfo{
+    text-align: center;
+
+    .profile-picture{
+        cursor: pointer;
+        border: 3px solid $peach-crayola;
+        border-radius: 100px;
+        height: 150px;
+        width: 150px;
+        z-index: 10;
+        overflow: hidden;
+        margin: 0 auto;
+        img{
+            max-width: 100%;
+            z-index: 8;
+        }
+    }
+}
+
+app-user-info, app-user-post, app-create-post, app-create-topic, app-user-topic, mat-divider{
+    margin: 15px;
+}
+
+.cards{
+    margin: 25px auto;
+    @include desktop {
+        width: 60%;
+    };
+}

@@ -76,7 +76,7 @@
     <mat-form-field>
         <textarea matInput required name="topicMessageContent" #postContent="ngModel" [(ngModel)]="content" maxlength="1500" placeholder="Écrivez un message..."></textarea>
     </mat-form-field>
-    <button type="submit" class="postSubmitButton" (click)="createTopicMessage()" mat-raised-button color="primary">Créer un message</button>
+    <button type="submit" name="submit" class="postSubmitButton" (click)="createTopicMessage()" mat-raised-button color="primary">Créer un message</button>
 </form>
 
 <app-loader *ngIf="loaderActive"></app-loader>

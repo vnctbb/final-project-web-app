@@ -2,5 +2,5 @@
     <mat-form-field>
         <textarea matInput required name="postContent" #postContent="ngModel" [(ngModel)]="content" maxlength="360" placeholder="Écrivez un post..."></textarea>
     </mat-form-field>
-    <button type="submit" class="postSubmitButton" (click)="createPost()" mat-raised-button color="primary">Créer un post</button>
+    <button type="submit" name="submit" class="postSubmitButton" (click)="createPost()" mat-raised-button color="primary">Créer un post</button>
 </form>

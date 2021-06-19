@@ -21,7 +21,7 @@
     <div *ngIf="signUpForm.submitted && !lastName.valid">
       <label class="validation-message">Ce champs est requis.</label>
     </div>
-    <input type="submit" value="Inscription">
+    <input type="submit" name="submit" value="Inscription">
   </form>
 
   <app-loader *ngIf="loaderActive"></app-loader>

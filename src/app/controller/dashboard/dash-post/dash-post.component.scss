@@ -1,0 +1,48 @@
+@import 'src/assets/styles/theme.scss';
+@import 'src/assets/styles/mixin.scss';
+
+.postList{
+    margin: 30px 0;
+}
+
+.post{
+    padding: 5px 15px;
+}
+
+.top-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content{
+    text-align: justify;
+}
+
+.info{
+    display: flex;
+
+    .userName{
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .time{
+        margin-left: 15px;
+        font-style: italic;
+    }
+}
+
+button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+mat-icon{
+    color: $gray;
+}
+
+mat-icon:hover{
+    color: $tumbleweed;
+}

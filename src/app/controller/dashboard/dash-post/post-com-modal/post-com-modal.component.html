@@ -1,0 +1,26 @@
+<div class="postcom-container">
+    <div *ngIf="postComs?.length > 0" class="postcom-loop">
+        <div *ngFor="let item of postComs" class="postcom">
+            <div class="postcom-top">
+                <div class="info">
+                    <p>{{item.authorName}}</p>
+                </div>
+                <div class="top-right">
+                    <p class="time">{{item.duration}} {{item.format}}</p>
+                    <button class="authorDelete" (click)="adminDeletePost(item._id)" #titleTooltip="matTooltip"
+                    matTooltip="Supprimer le commentaire"
+                    [matTooltipPosition]="position.value"
+                    aria-label="Delete postCom">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <p class="content">{{item.content}}</p>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="postComs?.length == 0">
+        <p>Aucun commentaire</p>
+    </div>
+</div>
+

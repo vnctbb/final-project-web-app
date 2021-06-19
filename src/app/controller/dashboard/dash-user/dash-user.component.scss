@@ -1,0 +1,79 @@
+@import 'src/assets/styles/theme.scss';
+@import 'src/assets/styles/mixin.scss';
+
+.userList{
+    margin: 30px 0;
+}
+
+form{
+    text-align: center;
+    margin : 30px 0;
+
+    @include tablet {
+        margin-bottom: 50px;
+
+    }
+
+    @include desktop {
+        margin-bottom: 50px;
+    }
+
+    .postSubmitButton{
+        width: 40px;
+        padding: 0px;
+        font-size: 0.8em;
+    }
+}
+
+.searchNone{
+    cursor: pointer;
+    color: $tumbleweed;
+    margin-top: -30px;
+    margin-bottom: 30px;
+
+    @include tablet {
+        margin-top: -50px;
+        margin-bottom: 50px;
+
+    }
+
+    @include desktop {
+        margin-top: -50px;
+        margin-bottom: 50px;
+    }
+}
+
+.user{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.info{
+    display: flex;
+
+    .userName{
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .time{
+        margin-left: 15px;
+        font-style: italic;
+    }
+}
+
+button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+mat-icon{
+    color: $gray;
+}
+
+mat-icon:hover{
+    color: $tumbleweed;
+}

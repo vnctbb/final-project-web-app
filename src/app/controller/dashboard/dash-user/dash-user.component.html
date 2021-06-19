@@ -1,0 +1,32 @@
+<div *ngIf="usersList" class="userList">
+    <form #newSearch="ngForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput required name="searchContent" [(ngModel)]="value" placeholder="Rechercher par Prénom et Nom..." #titleTooltip="matTooltip"
+            matTooltip="Rechercher par Prénom, Nom ou les deux !"
+            [matTooltipPosition]="position.value"
+            aria-label="Search">
+        </mat-form-field>
+        <button type="submit" class="postSubmitButton" mat-raised-button color="primary">Rechercher</button>
+    </form>
+    <p *ngIf="!searchNone" class="searchNone" (click)="cancelSearch()">Annuler la recherche</p>
+    <div *ngFor="let user of usersList" class="user">
+        <div class="info">
+            <p class="userName">{{user.firstName}} {{user.lastName}}</p>
+            <p *ngIf="user.duration" class="time">inscrit depuis {{user.duration}} {{user.format}}</p>
+        </div>
+        <div>
+            <button #titleTooltip="matTooltip"
+            matTooltip="Voir les informations de l'utilisateur"
+            [matTooltipPosition]="position.value"
+            aria-label="User info" (click)="openDialog(user)">
+                <mat-icon>remove_red_eye</mat-icon>
+            </button>
+            <button #titleTooltip="matTooltip"
+            matTooltip="Supprimer l'utilisateur"
+            [matTooltipPosition]="position.value"
+            aria-label="Delete user" (click)="deleteUser(user._id)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

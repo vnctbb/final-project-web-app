@@ -74,6 +74,13 @@ import { TopicService } from '../app/service/topic.service';
 import { SearchResultComponent } from './controller/search-result/search-result.component';
 import { SearchComponent } from './controller/search/search.component';
 import { ProfilePictureModalComponent } from './controller/user-profile/profile-picture-modal/profile-picture-modal.component';
+import { SignInAdminComponent } from './controller/user/sign-in-admin/sign-in-admin.component';
+import { DashboardComponent } from './controller/dashboard/dashboard.component';
+import { DashUserComponent } from './controller/dashboard/dash-user/dash-user.component';
+import { DashPostComponent } from './controller/dashboard/dash-post/dash-post.component';
+import { DashTopicComponent } from './controller/dashboard/dash-topic/dash-topic.component';
+import { UserInfoModalComponent } from './controller/dashboard/dash-user/user-info-modal/user-info-modal.component';
+import { PostComModalComponent } from './controller/dashboard/dash-post/post-com-modal/post-com-modal.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +118,13 @@ import { ProfilePictureModalComponent } from './controller/user-profile/profile-
     SearchResultComponent,
     SearchComponent,
     ProfilePictureModalComponent,
+    SignInAdminComponent,
+    DashboardComponent,
+    DashUserComponent,
+    DashPostComponent,
+    DashTopicComponent,
+    UserInfoModalComponent,
+    PostComModalComponent,
   ],
   imports: [
     CommonModule,

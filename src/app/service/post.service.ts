@@ -32,4 +32,12 @@ export class PostService {
   friendPost(request){
     return this.httpClient.post(environment.apiBaseUrl + '/post/list' ,request);
   }
+
+  adminList(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/post/list/admin' ,request);
+  }
+
+  adminDeletePost(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/post/delete/admin' ,request);
+  }
 }

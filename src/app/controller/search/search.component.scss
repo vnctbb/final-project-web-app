@@ -7,12 +7,12 @@ form{
     margin-bottom: 100px;
 
     @include tablet {
-        margin-bottom: 200;
+        margin-bottom: 200px;
 
     }
 
     @include desktop {
-        margin-bottom: 200;
+        margin-bottom: 200px;
     }
 
     .postSubmitButton{

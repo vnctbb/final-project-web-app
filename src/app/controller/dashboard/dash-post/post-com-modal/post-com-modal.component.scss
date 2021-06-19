@@ -1,0 +1,91 @@
+@import 'src/assets/styles/theme.scss';
+@import 'src/assets/styles/mixin.scss';
+
+.postcom-container{
+    max-height: 300px;
+    overflow-y: scroll;
+    padding: 0 10px;
+
+    .postcom-top{
+        display: flex;
+        justify-content: space-between;
+    
+        .info{
+            display: flex;
+            align-items: center;
+            height: 25px;
+        
+            img{
+                border-radius: 50px;
+                width: 25px;
+                margin-right: 10px;
+            }
+        
+            p{
+                font-size: 0.8em;
+                margin: 0px;
+            }
+        }
+
+        .top-right{
+            display: flex;
+            align-items: center;
+
+            button{
+                height: 40px !important;
+                line-height: 40px;
+
+                mat-icon{
+                    display: inline;
+                    vertical-align: top;
+                    margin-top: 5px;
+                    height: 25px;
+                }
+            }
+
+            button:select{
+                background-color: transparent;
+            }
+
+            .authorDelete{
+                border : none;
+                outline : none;
+                background-color: transparent;
+
+                mat-icon{
+                    color : $tumbleweed;
+                }
+            }
+
+            .time{
+                font-size: 0.8em;
+                font-style: italic;
+            }
+    
+            .menu{
+                font-size: 0.6em;
+            }
+        }
+    
+    }
+
+    
+    .content{
+        color : $gray
+    }
+}
+
+.form{
+    width : 90%;
+    text-align: center;
+    margin : 10px auto;
+
+    mat-form-field, .mat-form-field-wrapper, .mat-form-field-flex, .mat-form-field-infix, textarea{
+        height: 75px !important;
+        width: 100% !important;
+    }
+
+    button{
+        margin: 15px;
+    }
+}

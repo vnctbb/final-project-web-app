@@ -1,0 +1,27 @@
+<div *ngIf="postsList" class="postsList">
+    <div *ngFor="let post of postsList" class="post">
+        <div class="top-card">
+            <div class="info">
+                <p class="userName">{{post.authorName}}</p>
+                <p *ngIf="post.duration" class="time">{{post.duration}} {{post.format}}</p>
+            </div>
+            <div>
+                <button #titleTooltip="matTooltip"
+                matTooltip="Voir les commentaires"
+                [matTooltipPosition]="position.value"
+                aria-label="Post info" (click)="openDialog(post)">
+                    <mat-icon>remove_red_eye</mat-icon>
+                </button>
+                <button #titleTooltip="matTooltip"
+                matTooltip="Supprimer le post"
+                [matTooltipPosition]="position.value"
+                aria-label="Delete post" (click)="deletePost(post._id)">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div>
+            <p class="content">{{post.content}}</p>
+        </div>
+    </div>
+</div>

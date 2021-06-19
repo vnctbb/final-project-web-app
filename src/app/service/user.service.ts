@@ -30,6 +30,10 @@ export class UserService {
     return this.httpClient.post(environment.apiBaseUrl + '/user/authenticate' ,authCredentials, this.noAuthHeader);
   }
 
+  logAdmin(authCredentials){
+    return this.httpClient.post(environment.apiBaseUrl + '/user/authenticate/admin' ,authCredentials, this.noAuthHeader);
+  }
+
   updateUser(user: User){
     return this.httpClient.post(environment.apiBaseUrl + '/user/update' ,user);
   }
@@ -48,12 +52,24 @@ export class UserService {
     return this.httpClient.post(environment.apiBaseUrl + '/user/find', request)
   }
 
+  getList(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/user/find/list', request)
+  }
+
   search(request){
     return this.httpClient.post(environment.apiBaseUrl + '/user/search', request)
   }
 
+  isAdmin(){
+    return this.httpClient.get(environment.apiBaseUrl + '/user/check/admin')
+  }
+
   deleteUser(){
     return this.httpClient.get(environment.apiBaseUrl + '/user/delete');
+  }
+
+  adminDeleteUser(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/user/delete/admin', request);
   }
 
   setToken(token: string){

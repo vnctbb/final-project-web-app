@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+              <p class="label">Prénom :</p>
+              <p>{{data.user.firstName}}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="label">Nom :</p>
+              <p>{{data.user.lastName}}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="label">Email :</p>
+              <p>{{data.user.emailAddress}}</p>
+            </mat-list-item>
+            <mat-list-item *ngIf="data.user.age">
+              <p class="label">Age : </p>
+              <p>{{data.user.age}} ans</p>
+            </mat-list-item>
+            <mat-list-item *ngIf="!data.user.age">
+              <p class="label">Age :</p>
+              <p> - </p>
+            </mat-list-item>
+            <mat-list-item *ngIf="data.user.genre">
+              <p class="label">Genre : </p>
+              <p>{{data.user.genre}}</p>
+            </mat-list-item>
+            <mat-list-item *ngIf="!data.user.genre">
+              <p class="label">Genre : </p>
+              <p> - </p>
+            </mat-list-item>
+            <mat-list-item>
+              <p class="label">Pays : </p>
+              <p>{{data.user.country}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <h3 class="label">Présentation</h3>
+            <mat-list-item *ngIf="data.user.presentation"><p>{{data.user.presentation}}</p></mat-list-item>
+            <mat-list-item *ngIf="!data.user.presentation" class="prese"><p> - </p></mat-list-item>
+         </mat-list>                   
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>

@@ -12,7 +12,11 @@ import { ListTopicComponent } from '../app/controller/topic/list-topic/list-topi
 import { TopicComponent } from '../app/controller/topic/topic/topic.component'
 import { HomeComponent } from '../app/controller/home/home.component'
 import { SearchResultComponent } from './controller/search-result/search-result.component';
-
+import { SignInAdminComponent } from './controller/user/sign-in-admin/sign-in-admin.component';
+import { DashboardComponent } from './controller/dashboard/dashboard.component';
+import { DashUserComponent } from './controller/dashboard/dash-user/dash-user.component';
+import { DashPostComponent } from './controller/dashboard/dash-post/dash-post.component';
+import { DashTopicComponent } from './controller/dashboard/dash-topic/dash-topic.component';
 
 const routes: Routes = [
   {
@@ -22,6 +26,21 @@ const routes: Routes = [
   {
     path : 'login', component: UserComponent,
     children: [{path : '', component: SignInComponent}]
+  },
+  {
+    path : 'login/admin', component: SignInAdminComponent
+  },
+  {
+    path : 'dashboard/user', component: DashboardComponent, canActivate:[AuthGuard],
+    children: [{path : '', component: DashUserComponent}]
+  },
+  {
+    path : 'dashboard/post', component: DashboardComponent, canActivate:[AuthGuard],
+    children: [{path : '', component: DashPostComponent}]
+  },
+  {
+    path : 'dashboard/topic', component: DashboardComponent,
+    children: [{path : '', component: DashTopicComponent}]
   },
   {
     path : 'home', component: HomeComponent, canActivate:[AuthGuard]

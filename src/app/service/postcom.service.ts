@@ -32,5 +32,13 @@ export class PostComService {
     return this.httpClient.post(environment.apiBaseUrl + '/postcom/author/delete' ,request);
   }
 
+  adminList(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/postcom/list/author/admin' ,request);
+  }
+
+  adminDelete(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/postcom/delete/admin' ,request);
+  }
+
 }
 

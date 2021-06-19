@@ -55,7 +55,9 @@ export class UserFriendComponent implements OnInit {
             console.log(res);
             const datas: any = res;
             this.acceptedFriend = datas.friends;
-            this.getDuration(this.acceptedFriend);
+            if(this.acceptedFriend.length > 0){
+              this.getDuration(this.acceptedFriend);
+            }
             this.setDisplayName(this.acceptedFriend);
             this.loaderActive = false;
           },
@@ -88,7 +90,9 @@ export class UserFriendComponent implements OnInit {
           console.log(res);
           const datas: any = res;
           this.acceptedFriend = datas.friends;
-          this.getDuration(this.acceptedFriend);
+          if(this.acceptedFriend.length > 0) {
+            this.getDuration(this.acceptedFriend);
+          }
           this.setDisplayName(this.acceptedFriend);
           this.loaderActive = false;
         },
@@ -124,7 +128,9 @@ export class UserFriendComponent implements OnInit {
           console.log(res);
           const datas: any = res;
           this.receivedFriend = datas.friends;
-          this.getDuration(this.receivedFriend);
+          if(this.receivedFriend.length > 0){
+            this.getDuration(this.receivedFriend);
+          }
           this.loaderActive = false;
         },
         err => {
@@ -159,7 +165,9 @@ export class UserFriendComponent implements OnInit {
           console.log(res);
           const datas: any = res;
           this.sendedFriend = datas.friends;
-          this.getDuration(this.sendedFriend);
+          if(this.sendedFriend.length > 0){
+            this.getDuration(this.sendedFriend);
+          }
           this.loaderActive = false;
         },
         err => {

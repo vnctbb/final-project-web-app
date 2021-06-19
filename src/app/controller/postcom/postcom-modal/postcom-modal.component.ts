@@ -67,7 +67,9 @@ export class PostcomModalComponent implements OnInit {
 
         this.authorId = datas.authorId;
 
-        this.getDuration(this.postComs);
+        if(this.authorId.length > 0){
+          this.getDuration(this.postComs);
+        }
 
         if(this.postComs.length > 0){
           this.postComs.sort((a, b) => {
@@ -158,7 +160,9 @@ export class PostcomModalComponent implements OnInit {
         const datas: any = res
         this.postComs = datas.postcoms;
 
-        this.getDuration(this.postComs);
+        if(this.postComs.length > 0){
+          this.getDuration(this.postComs);
+        }
 
         if(this.postComs.length > 0){
           this.postComs.sort((a, b) => {

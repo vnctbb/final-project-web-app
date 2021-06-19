@@ -214,7 +214,9 @@ export class UserPostComponent implements OnInit {
         this.dbResponse = res;
         this.userPosts = this.dbResponse.response;
 
-        this.getDuration(this.userPosts);
+        if(this.userPosts.length > 0){
+          this.getDuration(this.userPosts);
+        }
 
         this.userPosts.forEach(item => console.log(item.duration))
 

@@ -131,7 +131,9 @@ export class OtherPostComponent implements OnInit {
         this.dbResponse = res;
         this.otherPosts = this.dbResponse.response;
 
-        this.getDuration(this.otherPosts);
+        if(this.otherPosts.length > 0){
+          this.getDuration(this.otherPosts);
+        }
 
         this.otherPosts.forEach(item => console.log(item.duration))
 

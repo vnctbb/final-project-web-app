@@ -117,7 +117,9 @@ export class OtherProfileComponent implements OnInit {
 
                 console.log(datas.friends)
                 this.otherFriends = datas.friends;
-                this.getDuration(this.otherFriends);
+                if(this.otherFriends.length > 0){
+                  this.getDuration(this.otherFriends);
+                }
                 this.setDisplayName(this.otherFriends);
 
                 this.friendLoaderActive = false;

@@ -57,7 +57,9 @@ export class HomeComponent implements OnInit {
 
             this.friendsPosts = datas.response;
 
-            this.getDuration(this.friendsPosts);
+            if(this.friendsPosts.length > 0){
+              this.getDuration(this.friendsPosts);
+            }
 
             this.loaderActive = false;
           },

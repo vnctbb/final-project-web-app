@@ -28,4 +28,9 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  disconnect(){
+    this.userService.deleteToken();
+    this.router.navigateByUrl('/login');
+  }
+
 }

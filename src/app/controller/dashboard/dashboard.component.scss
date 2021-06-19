@@ -51,3 +51,10 @@ header{
         justify-content: space-evenly;
     }
   }
+
+  .disconnect{
+    cursor: pointer;
+    text-align: center;
+    color: $tumbleweed;
+    margin-top: 100px;
+  }

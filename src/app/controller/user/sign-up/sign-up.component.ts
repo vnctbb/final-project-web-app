@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.userService.isLoggedIn()){
-      this.router.navigateByUrl('/profile')
+      this.router.navigateByUrl('/home')
     }
   }
 

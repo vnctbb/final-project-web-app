@@ -81,6 +81,7 @@ import { DashPostComponent } from './controller/dashboard/dash-post/dash-post.co
 import { DashTopicComponent } from './controller/dashboard/dash-topic/dash-topic.component';
 import { UserInfoModalComponent } from './controller/dashboard/dash-user/user-info-modal/user-info-modal.component';
 import { PostComModalComponent } from './controller/dashboard/dash-post/post-com-modal/post-com-modal.component';
+import { TopicMessageModalComponent } from './controller/dashboard/dash-topic/topic-message-modal/topic-message-modal.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { PostComModalComponent } from './controller/dashboard/dash-post/post-com
     DashTopicComponent,
     UserInfoModalComponent,
     PostComModalComponent,
+    TopicMessageModalComponent,
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,50 @@
-<p>dash-topic works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="done">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Titre </th>
+      <td mat-cell *matCellDef="let element" #titleTooltip="matTooltip"
+      matTooltip="{{element.title}}"
+      [matTooltipPosition]="position.value"
+      aria-label="Full title"
+      class="example-button"> {{element.title}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element" #descriptionTooltip="matTooltip"
+          matTooltip="{{element.description}}"
+          [matTooltipPosition]="position.value"
+          aria-label="Full description"
+          class="example-button"> {{element.description}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef> Auteur </th>
+      <td mat-cell *matCellDef="let element" #descriptionTooltip="matTooltip"
+      matTooltip="{{element.author}}"
+      [matTooltipPosition]="position.value"
+      aria-label="Full author name"> {{element.author}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="goto" class="goto">
+      <th mat-header-cell *matHeaderCellDef> Aller </th>
+      <td mat-cell *matCellDef="let element"> <mat-icon (click)="openDialog(element)" class="pointer">arrow_forward</mat-icon></td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="delete" class="delete">
+        <th mat-header-cell *matHeaderCellDef> Supp </th>
+        <td mat-cell *matCellDef="let element"> <mat-icon (click)="deleteTopic(element)" class="pointer">close</mat-icon></td>
+        </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+

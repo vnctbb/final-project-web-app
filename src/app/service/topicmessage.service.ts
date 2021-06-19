@@ -31,4 +31,8 @@ export class TopicmessageService {
   delete(request){
     return this.httpClient.post(environment.apiBaseUrl + '/topicmessage/delete' ,request);
   }
+
+  adminDelete(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/topicmessage/delete/admin' ,request);
+  }
 }

@@ -24,6 +24,10 @@ export class TopicService {
     return this.httpClient.post(environment.apiBaseUrl + '/topic/delete' ,request);
   }
 
+  adminDeleteTopic(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/topic/delete/admin' ,request);
+  }
+
   countTopic(){
     return this.httpClient.get(environment.apiBaseUrl + '/topic/count');
   }

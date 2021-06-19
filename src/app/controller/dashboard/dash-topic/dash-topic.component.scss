@@ -1,0 +1,89 @@
+@import 'src/assets/styles/mixin.scss';
+@import 'src/assets/styles/theme.scss';
+
+.version-info {
+    font-size: 0.3em;
+    float: right;
+    margin: 8px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+h2, h4{
+    margin: 10px;
+
+    @include tablet {
+        margin: 25px 50px;
+    };
+
+    @include desktop {
+        margin: 25px 100px;
+    };
+}
+
+h4{
+    text-align: justify;
+}
+
+th, td{
+    padding: 0px !important;
+    font-size: 0.8em !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.example-container {
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
+  }
+
+table {
+    width: 100%;
+    padding: 5px;
+    table-layout: fixed;
+    margin: 25px auto;
+
+    @include tablet {
+        width: 90%;
+    };
+
+    @include desktop {
+        width: 80%;
+    };
+
+    .mat-column-author{
+        width: 15% !important;
+    }
+
+    .mat-column-goto, .mat-column-delete{
+        width: 10% !important;
+    }
+}
+
+td{
+    text-align: left;
+}
+
+.page{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px auto;
+    button{
+        margin: 0px;
+    }
+    @include tablet {
+        width: 60%;
+    };
+
+    @include desktop {
+        width: 40%;
+    };
+
+    .pageCount{
+        text-align: center;
+    }
+}

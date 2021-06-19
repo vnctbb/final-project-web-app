@@ -49,7 +49,9 @@ export class UserPostComponent implements OnInit {
         this.userPosts = this.dbResponse.response;
         this.dbCount = this.dbResponse.count;
 
-        this.getDuration(this.userPosts);
+        if(this.userPosts.length > 0){
+          this.getDuration(this.userPosts);
+        }
 
         this.loaderActive = false;
       },

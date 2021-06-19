@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
 
             this.friendsPosts = datas.response;
 
-            if(this.friendsPosts.length > 0){
+            if(this.friendsPosts){
               this.getDuration(this.friendsPosts);
             }
 

@@ -32,8 +32,6 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    alert(form.value.email)
-    alert(form.value.password)
     this.userService.logUser(form.value).subscribe(
       res => {
         localStorage.setItem("token", res['token']);

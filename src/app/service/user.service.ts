@@ -27,7 +27,8 @@ export class UserService {
   }
 
   logUser(authCredentials){
-    return this.httpClient.post("http://192.168.1.11:80/user/authenticate" ,authCredentials, this.noAuthHeader);
+    alert(environment.apiBaseUrl)
+    return this.httpClient.post(environment.apiBaseUrl + '/user/authenticate' ,authCredentials, this.noAuthHeader);
   }
 
   logAdmin(authCredentials){

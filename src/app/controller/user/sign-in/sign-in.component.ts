@@ -32,7 +32,6 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    alert('CLIQUE OK')
     this.userService.logUser(form.value).subscribe(
       res => {
         localStorage.setItem("token", res['token']);
@@ -41,6 +40,7 @@ export class SignInComponent implements OnInit {
       err => {
         alert(err)
         alert(err.error)
+        alert(err.error.message)
         this.serverErrorMessages = err.error.message
       }
     )

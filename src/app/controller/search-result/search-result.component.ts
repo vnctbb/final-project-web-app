@@ -57,7 +57,6 @@ export class SearchResultComponent implements OnInit {
   }
 
   setPictureProfileUrl(friends){
-    console.log("PROFILE URL", friends)
     friends.forEach(item => {
       if (item.profilPicture){
         item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.profilPicture;

@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   //apiBaseUrl : "http://localhost:80",
   //staticServerUrl : "http://localhost:8080"
-  apiBaseUrl : "http://192.168.1.11:80",
-  //apiBaseUrl : "https://social-med-api.herokuapp.com",
+  //apiBaseUrl : "http://192.168.1.11:80",
+  apiBaseUrl : "https://social-med-api.herokuapp.com",
   staticServerUrl : "https://picture-render-api.herokuapp.com"
 };
 

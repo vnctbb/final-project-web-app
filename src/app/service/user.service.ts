@@ -27,6 +27,7 @@ export class UserService {
   }
 
   logUser(authCredentials){
+    alert(environment.apiBaseUrl)
     return this.httpClient.post(environment.apiBaseUrl + '/user/authenticate' ,authCredentials, this.noAuthHeader);
   }
 

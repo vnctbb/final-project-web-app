@@ -39,7 +39,8 @@ export class SignInComponent implements OnInit {
         this.router.navigateByUrl('home');
       },
       err => {
-        alert(err.error.message)
+        alert(err)
+        alert(err.error)
         this.serverErrorMessages = err.error.message
       }
     )

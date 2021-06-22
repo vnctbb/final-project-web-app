@@ -1,4 +1,4 @@
-<form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+<form #signInForm="ngForm">
     <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailAddressRegex" required [ngClass]="{'invalid-textbox' : signInForm.submitted && !email.valid}">
     <div *ngIf="signInForm.submitted && email.errors?.pattern">
         <label class="validation-message">Invalid email address.</label>
@@ -7,7 +7,7 @@
     <div *ngIf="signInForm.submitted && password.errors?.minlength">
         <label class="validation-message">Minimum 8 characters.</label>
     </div>
-    <button type="submit">Connexion</button>
+    <input type="submit" value="Connexion" (click)="signInForm.valid && onSubmit(signInForm)">
 </form>
 
 <!-- Error messages -->

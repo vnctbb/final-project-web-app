@@ -4,7 +4,8 @@
         <div *ngFor="let item of postComs" class="postcom">
             <div class="postcom-top">
                 <div class="info">
-                    <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profil_picture">
+                    <img *ngIf="item.authorPicture == none" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="item.authorPicture != none" [src]="item.profilPictureUrl" alt="profile_picture">
                     <p>{{item.authorName}}</p>
                 </div>
                 <div class="top-right">

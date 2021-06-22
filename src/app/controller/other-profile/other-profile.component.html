@@ -1,13 +1,13 @@
 <app-header></app-header>
 
-<div class="userInfo">
+<div class="userInfo" *ngIf="!loaderActive">
 
-  <div *ngIf="!thumbnail" class="profile-picture">
-      <img src="../../../assets/img/blank-profile-picture.png" alt="blank-profile-picture">
+  <div *ngIf="!otherDetails.profilPicture" class="profile-picture">
+    <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
   </div>
-
-  <div *ngIf="thumbnail" class="profile-picture">
-      <img [src]='thumbnail' alt="profile_picture">
+  
+  <div *ngIf="otherDetails.profilPicture" class="profile-picture">
+    <img [src]="otherDetails.profilPictureUrl" alt="profile_picture">
   </div>
 
     <div>
@@ -95,7 +95,8 @@
                       <div  *ngIf="otherFriends?.length > 0">
                           <div *ngFor="let friend of otherFriends">
                               <div class="one-friend">
-                                  <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                                <img *ngIf="!friend.profilPicture" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                                <img *ngIf="friend.profilPicture" [src]="friend.profilPictureUrl" alt="profile_picture">
                                   <div>
                                       <p class="friend-name" (click)="goToFriend(friend)">{{friend.displayName}}</p>
                                   </div>

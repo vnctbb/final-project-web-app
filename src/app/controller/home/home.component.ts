@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { PostcomModalComponent } from '../postcom/postcom-modal/postcom-modal.component';
 
@@ -10,6 +11,9 @@ import { PictureService } from 'src/app/service/picture.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-home',
@@ -34,7 +38,8 @@ export class HomeComponent implements OnInit {
     private likeService : LikeService,
     private pictureService : PictureService,
     private dialog : MatDialog,
-    private snackBar : MatSnackBar
+    private snackBar : MatSnackBar,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -43,9 +48,11 @@ export class HomeComponent implements OnInit {
         this.userDetails = res['user'];
 
         const request = {
-          limit : this.count,
-          sort : {
-            creationDatetime : 1
+          params : {
+            limit : this.count,
+            sort : {
+              creationDatetime : -1
+            }
           }
         };
 
@@ -57,8 +64,11 @@ export class HomeComponent implements OnInit {
 
             this.friendsPosts = datas.response;
 
+            this.dbCount = datas.count;
+
             if(this.friendsPosts){
               this.getDuration(this.friendsPosts);
+              this.setPictureProfileUrl(this.friendsPosts);
             }
 
             this.loaderActive = false;
@@ -120,13 +130,23 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  setPictureProfileUrl(friends){
+    friends.forEach(item => {
+      if (item.post.authorPicture){
+        item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.post.authorPicture;
+      }
+    })
+  }
+
   more(){
     this.count += 1;
 
     const request = {
-      limit : this.count,
-      sort : {
-        creationDatetime : 1
+      params : {
+        limit : this.count,
+        sort : {
+          creationDatetime : -1
+        }
       }
     };
 
@@ -137,6 +157,11 @@ export class HomeComponent implements OnInit {
         const datas: any = res;
 
         this.friendsPosts = datas.response;
+
+        if(this.friendsPosts){
+          this.getDuration(this.friendsPosts);
+          this.setPictureProfileUrl(this.friendsPosts);
+        }
       },
       err => {
         this.loaderActive = false;
@@ -210,6 +235,11 @@ export class HomeComponent implements OnInit {
       res => {console.log(res)},
       err => {console.log(err)}
     )*/
+  }
+
+  
+  goToAuthor(id){
+    this.router.navigate(['user'], { queryParams: { id: id } });
   }
 
 }

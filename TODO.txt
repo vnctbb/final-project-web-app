@@ -42,21 +42,13 @@ entre deux => supprimer post com depuis profile -- + (like own post --)
 
 Page accueil (tous les posts de mes amis + création de post + like + comment) => 16 --
 
+CLIQUER SUR LE NOM DES GENS POUR ALLER SUR LEUR PROFIL - ce soir --
+
 RAPIDE :
 
-VOIR QUI LIKE
+Mettre les photos des users partout - ce soir (mettre photo dans user post et other post)
 
-LIEN RAPIDE VERS ACCUEIL, BACK VERS TOPICS
-
-CLIQUER SUR LE NOM DES GENS POUR ALLER SUR LEUR PROFIL
-
-Ajouter pagination dans la recherche si j'ai le temps
-
-Remodifier toutes les entités quand je modifie un user
-
-Essayer de passer les photos sur les posts
-
-Supprimer une photos
+Putain de bouton qui marche pas sur mobile - ce soir si j'avance vite
 
 BIG TASK :
 
@@ -64,31 +56,20 @@ Search avec page résult 17 --
 
 Photo 18 --
 
-Page admin 19
+Page admin 19 --
 
-Chat 20
-
-Changer mot de passe et adresse mail 20
+Changer mot de passe et adresse mail (essayer demain si rien d'autre à faire)
 
 CLOSE :
 
-router.navigate change profile to home
-
-Plus tard :
-
-envoye de mail
-
-select pour le pays
-
-Rajouter à topics => mes topics
-limiter nombre de résultat et demander à afficher plus de résultat (pour topic peut-être renvoyer vers une page mes topics => dans ce cas : page mes topics)
+router.navigate change profile to home (verifier ce soir)
 
 A faire avant de déployer :
 
-enlever limit de post (enfin l'agrandir)
+enlever limit de post (enfin l'agrandir) (ce soir)
 
 Supprimer TODO.txt
 
-Enlever console.log()
+Enlever console.log() (demain soir)
 
-Changer API URL et DB URL
+Changer et DB URL

@@ -8,6 +8,7 @@ import { UserService } from 'src/app/service/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TooltipPosition} from '@angular/material/tooltip';
 
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-friend',
@@ -57,6 +58,7 @@ export class UserFriendComponent implements OnInit {
             this.acceptedFriend = datas.friends;
             if(this.acceptedFriend.length > 0){
               this.getDuration(this.acceptedFriend);
+              this.setPictureProfileUrl(this.sendedFriend);
             }
             this.setDisplayName(this.acceptedFriend);
             this.loaderActive = false;
@@ -92,6 +94,7 @@ export class UserFriendComponent implements OnInit {
           this.acceptedFriend = datas.friends;
           if(this.acceptedFriend.length > 0) {
             this.getDuration(this.acceptedFriend);
+            this.setPictureProfileUrl(this.sendedFriend);
           }
           this.setDisplayName(this.acceptedFriend);
           this.loaderActive = false;
@@ -130,6 +133,7 @@ export class UserFriendComponent implements OnInit {
           this.receivedFriend = datas.friends;
           if(this.receivedFriend.length > 0){
             this.getDuration(this.receivedFriend);
+            this.setPictureProfileUrl(this.sendedFriend);
           }
           this.loaderActive = false;
         },
@@ -167,6 +171,7 @@ export class UserFriendComponent implements OnInit {
           this.sendedFriend = datas.friends;
           if(this.sendedFriend.length > 0){
             this.getDuration(this.sendedFriend);
+            this.setPictureProfileUrl(this.sendedFriend);
           }
           this.loaderActive = false;
         },
@@ -222,6 +227,14 @@ export class UserFriendComponent implements OnInit {
       item.duration = Math.round(duration);
       item.format = format;
 
+    })
+  }
+
+  setPictureProfileUrl(friends){
+    friends.forEach(item => {
+      if (item.profilPicture){
+        item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.profilPicture;
+      }
     })
   }
 

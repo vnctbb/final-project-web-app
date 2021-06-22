@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {TooltipPosition} from '@angular/material/tooltip';
 
 import { ProfilePictureModalComponent } from './profile-picture-modal/profile-picture-modal.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,6 +23,7 @@ export class UserProfileComponent implements OnInit {
   position = new FormControl(this.positionOptions[0]);
 
   userDetails;
+  profilePictureFilename;
   thumbnail: any;
 
   loaderActive: boolean = true;
@@ -43,29 +45,11 @@ export class UserProfileComponent implements OnInit {
         console.log(this.userDetails)
 
         if(this.userDetails.profilPicture){
-          const request = {
-            params : {
-              profilPicture : this.userDetails.profilPicture
-            }
-          }
-
-          this.userService.getUserProfilePicture(request).subscribe(
-            res => {
-              const data : any = res
-
-              let objectURL = URL.createObjectURL(data);       
-              this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-
-              this.loaderActive = false;
-            },
-            err => {
-              console.log(err)
-              this.loaderActive = false;
-            }
-          )
-        } else {
-          this.loaderActive = false;
+          this.profilePictureFilename = environment.staticServerUrl + "/picture/" + this.userDetails.profilPicture
+          console.log(this.profilePictureFilename)
         }
+
+        this.loaderActive = false;
       },
       err => {}
     )
@@ -90,7 +74,31 @@ export class UserProfileComponent implements OnInit {
         this.pictureService.uploadPicture(file).subscribe(
           res => {
             console.log(res)
-            {window.location.reload()}
+            const datas: any = res;
+            const request = {
+              filename : datas.filename
+            }
+            this.userService.setUserProfilePicture(request).subscribe(
+              res => {
+                if(this.userDetails.profilPicture){
+                  this.pictureService.deletePicture(this.userDetails.profilPicture).subscribe(
+                    res => {
+                      {window.location.reload()}
+                    },
+                    err => {
+                      {window.location.reload()}
+                    }
+                  )
+                } else {
+                  {window.location.reload()}
+                }
+              },
+              err => {
+                let snackBarRef = this.snackBar.open('Erreur lors de l\'ajout de la photo.', 'X', {
+                  duration: 5000
+                });
+              }
+            )
           },
           err => {
             if(err.error.message.code == "LIMIT_FILE_SIZE"){

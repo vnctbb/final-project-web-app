@@ -12,6 +12,8 @@ import { PostcomModalComponent } from '../postcom/postcom-modal/postcom-modal.co
 import {MatDialog} from '@angular/material/dialog';
 import {TooltipPosition} from '@angular/material/tooltip';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-other-profile',
   templateUrl: './other-profile.component.html',
@@ -78,28 +80,10 @@ export class OtherProfileComponent implements OnInit {
           this.otherDetails = datas.user
 
           if(this.otherDetails.profilPicture){
-            const requestPicture = {
-              params : {
-                profilPicture : this.otherDetails.profilPicture
-              }
-            }
-    
-            this.userService.getUserProfilePicture(requestPicture).subscribe(
-              res => {
-                const data : any = res
-    
-                let objectURL = URL.createObjectURL(data);       
-                this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-    
-              },
-              err => {
-                console.log(err)
-                this.loaderActive = false;
-              }
-            )
+            this.otherDetails.profilPictureUrl = environment.staticServerUrl + "/picture/" + this.otherDetails.profilPicture;
           }
 
-          if(this.friendship.status == "ACCEPTED"){
+          if(this.friendship?.status == "ACCEPTED"){
 
             const friendRequest = {
               params : {
@@ -119,8 +103,9 @@ export class OtherProfileComponent implements OnInit {
                 this.otherFriends = datas.friends;
                 if(this.otherFriends.length > 0){
                   this.getDuration(this.otherFriends);
+                  this.setPictureProfileUrl(this.otherFriends);
+                  this.setDisplayName(this.otherFriends);
                 }
-                this.setDisplayName(this.otherFriends);
 
                 this.friendLoaderActive = false;
 
@@ -209,6 +194,14 @@ export class OtherProfileComponent implements OnInit {
       item.duration = Math.round(duration);
       item.format = format;
 
+    })
+  }
+
+  setPictureProfileUrl(friends){
+    friends.forEach(item => {
+      if (item.profilPicture){
+        item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.profilPicture;
+      }
     })
   }
 

@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
@@ -38,6 +40,9 @@ export class SearchResultComponent implements OnInit {
           const datas: any = res;
           this.users = datas.users;
           this.loaderActive = false;
+          if(this.users){
+            this.setPictureProfileUrl(this.users);
+          }
         },
         err => {
           console.log(err);
@@ -49,6 +54,15 @@ export class SearchResultComponent implements OnInit {
       )
     })
 
+  }
+
+  setPictureProfileUrl(friends){
+    console.log("PROFILE URL", friends)
+    friends.forEach(item => {
+      if (item.profilPicture){
+        item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.profilPicture;
+      }
+    })
   }
 
   returnHome(){

@@ -13,7 +13,11 @@ export class PictureService {
   ) { }
 
   uploadPicture(file){
-    return this.httpClient.post(environment.apiBaseUrl + '/picture/upload/profile' ,file);
+    return this.httpClient.post(environment.staticServerUrl + '/upload' ,file);
+  }
+
+  deletePicture(filename){
+    return this.httpClient.get(environment.staticServerUrl + '/delete/' + filename);
   }
 }
 

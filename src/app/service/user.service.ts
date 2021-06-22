@@ -38,6 +38,14 @@ export class UserService {
     return this.httpClient.post(environment.apiBaseUrl + '/user/update' ,user);
   }
 
+  setUserProfilePicture(request){
+    return this.httpClient.post(environment.apiBaseUrl + '/user/set/profile/picture' ,request);
+  }
+
+  unsetUserProfilePicture(){
+    return this.httpClient.get(environment.apiBaseUrl + '/user/unset/profile/picture');
+  }
+
   getUserProfile(){
     return this.httpClient.get(environment.apiBaseUrl + '/user/profile');
   }

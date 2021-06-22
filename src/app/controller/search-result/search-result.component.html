@@ -12,7 +12,8 @@
     <div *ngIf="users?.length > 0">
         <div *ngFor="let user of users">
             <div class="one-friend">
-                <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                <img *ngIf="!user.profilPicture" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                <img *ngIf="user.profilPicture" [src]="user.profilPictureUrl" alt="profile_picture">
                 <div>
                     <p class="friend-name">{{user.firstName}} {{user.lastName}}</p>
                 </div>

@@ -16,7 +16,8 @@
                 <div  *ngIf="acceptedFriend.length > 0">
                     <div *ngFor="let friend of acceptedFriend">
                         <div class="one-friend">
-                            <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="!friend.profilPicture" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="friend.profilPicture" [src]="friend.profilPictureUrl" alt="profile_picture">
                             <div>
                                 <p class="friend-name" (click)="goTo(friend)">{{friend.displayName}}</p>
                                 <p class="since">depuis {{friend.duration}} {{friend.format}}</p>
@@ -37,7 +38,8 @@
                 <div  *ngIf="receivedFriend.length > 0">
                     <div *ngFor="let friend of receivedFriend">
                         <div class="one-friend">
-                            <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="!friend.profilPicture" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="friend.profilPicture" [src]="friend.profilPictureUrl" alt="profile_picture">
                             <div>
                                 <p class="friend-name" (click)="goTo(friend._id)">{{friend.senderName}}</p>
                                 <p class="since">depuis {{friend.duration}} {{friend.format}}</p>
@@ -66,7 +68,8 @@
                 <div  *ngIf="sendedFriend.length > 0">
                     <div *ngFor="let friend of sendedFriend">
                         <div class="one-friend">
-                            <img src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="!friend.profilPicture" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="friend.profilPicture" [src]="friend.profilPictureUrl" alt="profile_picture">
                             <div>
                                 <p class="friend-name" (click)="goTo(friend._id)">{{friend.receiverName}}</p>
                                 <p class="since">depuis {{friend.duration}} {{friend.format}}</p>

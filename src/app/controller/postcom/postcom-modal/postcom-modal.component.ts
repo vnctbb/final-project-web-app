@@ -10,6 +10,8 @@ import { PostcomUpdateModalComponent } from '../postcom-update-modal/postcom-upd
 
 import { PostComService } from 'src/app/service/postcom.service';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-postcom-modal',
   templateUrl: './postcom-modal.component.html',
@@ -69,6 +71,7 @@ export class PostcomModalComponent implements OnInit {
 
         if(this.authorId.length > 0){
           this.getDuration(this.postComs);
+          this.setPictureProfileUrl(this.postComs)
         }
 
         if(this.postComs.length > 0){
@@ -110,6 +113,14 @@ export class PostcomModalComponent implements OnInit {
       item.duration = Math.round(duration);
       item.format = format;
 
+    })
+  }
+
+  setPictureProfileUrl(friends){
+    friends.forEach(item => {
+      if (item.authorPicture){
+        item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.authorPicture;
+      }
     })
   }
 

@@ -1,18 +1,18 @@
 <app-header></app-header>
 <div class="userInfo">
 
-    <div *ngIf="!thumbnail" class="profile-picture" #titleTooltip="matTooltip"
+    <div *ngIf="!profilePictureFilename" class="profile-picture" #titleTooltip="matTooltip"
     matTooltip="Ajouter une photo de profil"
     [matTooltipPosition]="position.value"
     aria-label="Add picture" (click)="openPictureDialog()">
         <img src="../../../assets/img/blank-profile-picture.png" alt="blank-profile-picture">
     </div>
 
-    <div *ngIf="thumbnail" class="profile-picture" #titleTooltip="matTooltip"
+    <div *ngIf="profilePictureFilename" class="profile-picture" #titleTooltip="matTooltip"
     matTooltip="Modifier la photo de profil"
     [matTooltipPosition]="position.value"
     aria-label="Change picture" (click)="openPictureDialog()">
-        <img [src]='thumbnail' alt="profile_picture">
+        <img [src]='profilePictureFilename' alt="profile_picture">
     </div>
 
     <div>

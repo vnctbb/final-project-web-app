@@ -11,8 +11,9 @@
                 <mat-card-header>
                     <mat-card-title>
                         <div>
-                            <img src="../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
-                            <p class='author'>{{ item.post.authorName }}</p>
+                            <img *ngIf="item.post.authorPicture == none" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="item.post.authorPicture != none" [src]="item.profilPictureUrl" alt="profile_picture">
+                            <p class='author' (click)="goToAuthor(item.post.authorId)">{{ item.post.authorName }}</p>
                         </div>
                         <div>
                             <p class="time">{{ item.duration }} {{ item.format }}</p>

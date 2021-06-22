@@ -32,12 +32,14 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
+    alert('CLIQUE OK')
     this.userService.logUser(form.value).subscribe(
       res => {
         localStorage.setItem("token", res['token']);
         this.router.navigateByUrl('home');
       },
       err => {
+        alert(err.error.message)
         this.serverErrorMessages = err.error.message
       }
     )

@@ -7,7 +7,7 @@
     <div *ngIf="signInForm.submitted && password.errors?.minlength">
         <label class="validation-message">Minimum 8 characters.</label>
     </div>
-    <input type="submit" value="Connexion" (click)="signInForm.valid && onSubmit(signInForm)">
+    <button (click)="signInForm.valid && onSubmit(signInForm)">Connexion</button>
 </form>
 
 <!-- Error messages -->

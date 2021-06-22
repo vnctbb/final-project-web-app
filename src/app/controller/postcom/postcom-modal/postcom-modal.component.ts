@@ -69,12 +69,12 @@ export class PostcomModalComponent implements OnInit {
 
         this.authorId = datas.authorId;
 
-        if(this.authorId.length > 0){
+        if(this.authorId){
           this.getDuration(this.postComs);
           this.setPictureProfileUrl(this.postComs)
         }
 
-        if(this.postComs.length > 0){
+        if(this.postComs){
           this.postComs.sort((a, b) => {
             return a.creationDatetime - b.creationDatetime;
           });
@@ -171,11 +171,11 @@ export class PostcomModalComponent implements OnInit {
         const datas: any = res
         this.postComs = datas.postcoms;
 
-        if(this.postComs.length > 0){
+        if(this.postComs){
           this.getDuration(this.postComs);
         }
 
-        if(this.postComs.length > 0){
+        if(this.postComs){
           this.postComs.sort((a, b) => {
             return a.creationDatetime - b.creationDatetime;
           });

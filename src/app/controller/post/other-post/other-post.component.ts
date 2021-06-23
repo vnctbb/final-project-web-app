@@ -8,6 +8,8 @@ import { PostcomModalComponent } from '../../postcom/postcom-modal/postcom-modal
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-other-post',
   templateUrl: './other-post.component.html',
@@ -39,6 +41,10 @@ export class OtherPostComponent implements OnInit {
         params : {
           authorId : this.user._id,
           friendId : this.friend._id,
+          limit : this.count,
+          sort : {
+            creationDatetime : -1
+          }
         }
       }
 
@@ -47,12 +53,13 @@ export class OtherPostComponent implements OnInit {
           this.dbResponse = res;
           this.otherPosts = this.dbResponse.response;
           this.dbCount = this.dbResponse.count;
-  
-          this.getDuration(this.otherPosts);
-  
-          this.otherPosts.forEach(item => console.log(item.duration))
-  
-          console.log(this.otherPosts)
+
+          if(this.otherPosts){
+            this.getDuration(this.otherPosts);
+            this.setPictureProfileUrl(this.otherPosts);
+
+          }
+    
           this.loaderActive = false;
 
         },
@@ -112,6 +119,14 @@ export class OtherPostComponent implements OnInit {
     })
   }
 
+  setPictureProfileUrl(friends){
+    friends.forEach(item => {
+      if (item.post.authorPicture){
+        item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.post.authorPicture;
+      }
+    })
+  }
+
   more(){
     this.count += 1;
 
@@ -131,8 +146,10 @@ export class OtherPostComponent implements OnInit {
         this.dbResponse = res;
         this.otherPosts = this.dbResponse.response;
 
-        if(this.otherPosts.length > 0){
+        if(this.otherPosts){
           this.getDuration(this.otherPosts);
+          this.setPictureProfileUrl(this.otherPosts);
+
         }
 
         this.otherPosts.forEach(item => console.log(item.duration))

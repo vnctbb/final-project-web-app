@@ -11,7 +11,11 @@
                     <mat-card class="example-card">
                         <mat-card-header>
                             <mat-card-title>
-                            <p class='author'>{{ item.post.authorName }}</p>
+                            <div>
+                                <img *ngIf="!item.profilPictureUrl" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                                <img *ngIf="item.profilPictureUrl" [src]="item.profilPictureUrl" alt="profile_picture">
+                                <p class='author'>{{ item.post.authorName }}</p>
+                            </div>
                             <div>
                                 <p class="time">{{ item.duration }} {{ item.format }}</p>
                             </div>

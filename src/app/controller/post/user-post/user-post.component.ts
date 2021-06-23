@@ -9,6 +9,8 @@ import { UpdatePostComponent } from '../update-post/update-post.component';
 import { PostcomModalComponent } from '../../postcom/postcom-modal/postcom-modal.component';
 import { LikeComponent } from '../../like/like.component';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-user-post',
   templateUrl: './user-post.component.html',
@@ -49,8 +51,11 @@ export class UserPostComponent implements OnInit {
         this.userPosts = this.dbResponse.response;
         this.dbCount = this.dbResponse.count;
 
-        if(this.userPosts.length > 0){
+        console.log(this.userPosts)
+
+        if(this.userPosts){
           this.getDuration(this.userPosts);
+          this.setPictureProfileUrl(this.userPosts);
         }
 
         this.loaderActive = false;
@@ -90,6 +95,14 @@ export class UserPostComponent implements OnInit {
       item.duration = Math.round(duration);
       item.format = format;
 
+    })
+  }
+
+  setPictureProfileUrl(friends){
+    friends.forEach(item => {
+      if (item.post.authorPicture){
+        item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.post.authorPicture;
+      }
     })
   }
 
@@ -216,6 +229,7 @@ export class UserPostComponent implements OnInit {
 
         if(this.userPosts.length > 0){
           this.getDuration(this.userPosts);
+          this.setPictureProfileUrl(this.userPosts);
         }
 
         this.userPosts.forEach(item => console.log(item.duration))

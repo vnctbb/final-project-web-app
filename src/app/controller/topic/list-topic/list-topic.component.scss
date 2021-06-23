@@ -11,6 +11,20 @@
     cursor: pointer;
 }
 
+app-create-topic{
+    margin: 15px;
+}
+
+.menu-link{
+    margin-left: 10px;
+    color: $tumbleweed;
+    text-align: center;
+    text-decoration: none;
+}
+.menu-link:hover{
+    color: $sandy-brown;
+}
+
 h2, h4{
     margin: 10px;
 

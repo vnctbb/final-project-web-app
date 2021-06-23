@@ -50,12 +50,6 @@ export class UserService {
     return this.httpClient.get(environment.apiBaseUrl + '/user/profile');
   }
 
-  getUserProfilePicture(request){
-    return this.httpClient.post(environment.apiBaseUrl + '/user/profile/picture', request, {
-        responseType : 'blob',
-    });
-  }
-
   getOneById(request){
     return this.httpClient.post(environment.apiBaseUrl + '/user/find', request)
   }

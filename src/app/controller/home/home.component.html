@@ -11,8 +11,8 @@
                 <mat-card-header>
                     <mat-card-title>
                         <div>
-                            <img *ngIf="item.post.authorPicture == none" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
-                            <img *ngIf="item.post.authorPicture != none" [src]="item.profilPictureUrl" alt="profile_picture">
+                            <img *ngIf="!item.profilPictureUrl" src="../../../../assets/img/blank-profile-picture.png" alt="blank_profile_picture">
+                            <img *ngIf="item.profilPictureUrl" [src]="item.profilPictureUrl" alt="profile_picture">
                             <p class='author' (click)="goToAuthor(item.post.authorId)">{{ item.post.authorName }}</p>
                         </div>
                         <div>

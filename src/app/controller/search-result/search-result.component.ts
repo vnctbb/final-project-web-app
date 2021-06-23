@@ -58,7 +58,7 @@ export class SearchResultComponent implements OnInit {
 
   setPictureProfileUrl(friends){
     friends.forEach(item => {
-      if (item.profilPicture){
+      if (item.profilPicture  && item.profilPicture != "none"){
         item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.profilPicture;
       }
     })

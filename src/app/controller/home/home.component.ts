@@ -132,7 +132,7 @@ export class HomeComponent implements OnInit {
 
   setPictureProfileUrl(friends){
     friends.forEach(item => {
-      if (item.post.authorPicture){
+      if (item.post.authorPicture  && item.post.authorPicture != "none"){
         item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.post.authorPicture;
       }
     })

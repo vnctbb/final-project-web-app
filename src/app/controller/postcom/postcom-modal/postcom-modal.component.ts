@@ -118,7 +118,7 @@ export class PostcomModalComponent implements OnInit {
 
   setPictureProfileUrl(friends){
     friends.forEach(item => {
-      if (item.authorPicture){
+      if (item.authorPicture && item.authorPicture != "none"){
         item.profilPictureUrl = environment.staticServerUrl + "/picture/" + item.authorPicture;
       }
     })

@@ -1,7 +1,7 @@
 <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
     <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailAddressRegex" required [ngClass]="{'invalid-textbox' : signInForm.submitted && !email.valid}">
     <div *ngIf="signInForm.submitted && email.errors?.pattern">
-        <label class="validation-message">Address email invalide.</label>
+        <label class="validation-message">Addresse email invalide.</label>
     </div>
     <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password" required minlength="8" [ngClass]="{'invalid-textbox' : signInForm.submitted && !password.valid}">
     <div *ngIf="signInForm.submitted && password.errors?.minlength">

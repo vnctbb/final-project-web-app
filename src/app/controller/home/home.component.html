@@ -17,11 +17,11 @@
                         </div>
                         <div>
                             <p class="time">{{ item.duration }} {{ item.format }}</p>
-                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <button *ngIf="userDetails._id == item.post.authorId" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #menu="matMenu">
-                                <button mat-menu-item (click)="openDialog(item)">
+                                <button mat-menu-item (click)="openUpdatePostDialog(item)">
                                     <mat-icon>update</mat-icon>
                                     <span>Modifier</span>
                                 </button>

@@ -143,6 +143,10 @@ export class PostcomModalComponent implements OnInit {
 
         const datas: any = res;
 
+        datas.doc.profilPictureUrl = environment.staticServerUrl + "/picture/" + datas.picture;
+
+        console.log(datas.doc.profilPictureUrl)
+
         this.postComs.push(datas.doc)
       },
       err => {
@@ -173,6 +177,7 @@ export class PostcomModalComponent implements OnInit {
 
         if(this.postComs){
           this.getDuration(this.postComs);
+          this.setPictureProfileUrl(this.postComs);
         }
 
         if(this.postComs){

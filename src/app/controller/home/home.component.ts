@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { PostcomModalComponent } from '../postcom/postcom-modal/postcom-modal.component';
+import { UpdatePostComponent } from '../post/update-post/update-post.component';
 
 import { UserService } from '../../service/user.service';
 import { PostService } from 'src/app/service/post.service';
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit {
           params : {
             limit : this.count,
             sort : {
-              creationDatetime : -1
+              modificationDatetime : -1
             }
           }
         };
@@ -100,6 +101,50 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  openUpdatePostDialog(item): void {
+    const dialogRef = this.dialog.open(UpdatePostComponent, {
+      width: '250px',
+      data: {content: item.post.content, id: item.post._id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.loaderActive = true;
+      console.log('dialog closed');
+      if(result){
+        const request = {
+          postId : result.id,
+          params : {
+            creationDatetime : Date.now(),
+            content: result.content
+        }}
+        this.postService.updatePost(request).subscribe(
+          res => {
+            console.log("RESPONSE => ", res)
+  
+            for(let i = 0; i < this.friendsPosts.length; i++){
+              if(this.friendsPosts[i].post._id == result.id){
+                this.friendsPosts[i].post.content = result.content;
+              }
+            }
+            this.loaderActive = false;
+            let snackBarRef = this.snackBar.open('Post modifié', 'X', {
+              duration: 2000
+            });
+        },
+          err => {
+            console.log("ERROR => ", err)
+            this.loaderActive = false;
+            let snackBarRef = this.snackBar.open('Erreur lors de la modification', 'X', {
+              duration: 5000
+            });
+          }
+        )
+      } else {
+        this.loaderActive = false;
+      }
+    });
+  }
+
   getDuration(posts): void{
     posts.forEach(item => {
 
@@ -145,7 +190,7 @@ export class HomeComponent implements OnInit {
       params : {
         limit : this.count,
         sort : {
-          creationDatetime : -1
+          modificationDatetime : -1
         }
       }
     };
@@ -166,6 +211,39 @@ export class HomeComponent implements OnInit {
       err => {
         this.loaderActive = false;
         let snackBarRef = this.snackBar.open('Erreur lors du chargement', 'X', {
+          duration: 5000
+        });
+      }
+    )
+  }
+
+  deletePost(postId){
+
+    this.loaderActive = true;
+
+    const request = {postId : postId}
+    
+    this.postService.deletePost(request).subscribe(
+      res => {
+        console.log("RESPONSE =>", res);
+
+        for(let i = 0; i < this.friendsPosts.length; i++){
+          if(this.friendsPosts[i].post._id == postId){
+            this.friendsPosts.splice(i, 1)
+          }
+        }
+        if(this.friendsPosts.length == 0){
+          window.location.reload()
+        }
+        this.loaderActive = false;
+        let snackBarRef = this.snackBar.open('Post supprimé', 'X', {
+          duration: 2000
+        });
+      },
+      err => {
+        this.loaderActive = false;
+        console.error("ERROR => ", err)
+        let snackBarRef = this.snackBar.open('Erreur lors de la suppression du post', 'X', {
           duration: 5000
         });
       }

@@ -61,7 +61,7 @@
     <div class="pageCount">
       <p>{{currentPage}} / {{pageCount}}</p>
     </div>
-    <button mat-button (click)="nextPage()" [disabled]="paginationA + pageTopicCount <= topicCount && pageCount > 1">
+    <button mat-button (click)="nextPage()" [disabled]="paginationA + pageTopicCount < topicCount && pageCount > 1">
       <p *ngIf="paginationA + pageTopicCount < topicCount && pageCount > 1">
         Suivante
       </p>

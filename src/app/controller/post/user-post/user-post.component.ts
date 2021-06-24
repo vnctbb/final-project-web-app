@@ -23,7 +23,7 @@ export class UserPostComponent implements OnInit {
   dbResponse;
 
   dbCount;
-  count = 1;
+  count = 6;
 
   loaderActive = true;
 

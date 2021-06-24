@@ -23,7 +23,7 @@ export class OtherPostComponent implements OnInit {
   dbResponse;
   otherPosts;
   dbCount;
-  count = 1;
+  count = 6;
 
 
   loaderActive = true;

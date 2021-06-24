@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   friendsPosts;
   
   dbCount;
-  count = 1;
+  count = 10;
 
   loaderActive = true;
 
@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
         const request = {
           postId : result.id,
           params : {
-            creationDatetime : Date.now(),
+            modificationDatetime : Date.now(),
             content: result.content
         }}
         this.postService.updatePost(request).subscribe(

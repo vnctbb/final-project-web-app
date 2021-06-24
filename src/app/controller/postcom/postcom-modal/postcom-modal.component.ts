@@ -24,7 +24,7 @@ export class PostcomModalComponent implements OnInit {
 
   postComs = [];
   dbCount;
-  count = 2;
+  count = 3;
 
   authorId;
 

@@ -56,6 +56,8 @@ export class ListTopicComponent implements OnInit {
   }
 
   getTopic(){
+    console.log(this.paginationA)
+    console.log(this.pageTopicCount)
     const request = {
       params : {
         skip : this.paginationA,

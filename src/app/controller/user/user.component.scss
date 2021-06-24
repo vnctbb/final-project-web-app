@@ -21,6 +21,17 @@ header{
         margin: 15px;
         width: 75px;
     }
+}
+
+.sub-contain{
+  width: 90%;
+  margin: 0 auto;
+  .subtitle{
+    color: $tumbleweed;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+  }
 
 }
 
